@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "(root)",
+    "database": "mamasrecipes_dev",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "(root)",
+    "database": "mamasrecipes_tst",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "(root)",
+    "database": "mamasrecipes",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
