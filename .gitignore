@@ -5,4 +5,4 @@ MyStuff
 .env
 *.log
 ```
-
+package-lock.json
