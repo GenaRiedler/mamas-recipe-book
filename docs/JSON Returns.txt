@@ -1,0 +1,115 @@
+/ or /displayAll both return:
+[
+    {
+        "id": 1,
+        "title": "Meatloaf",
+        "description": "Meatloaf",
+        "picture": "meatloaf.png",
+        "keyWords": "hamburger",
+        "createdAt": "2018-01-01T00:00:00.000Z",
+        "updatedAt": "2018-01-01T00:00:00.000Z"
+    },
+    {
+        "id": 2,
+        "title": "Chicken Soup",
+        "description": "Chicken Soup",
+        "picture": "chickensoup",
+        "keyWords": "chicken, soup",
+        "createdAt": "2018-01-01T00:00:00.000Z",
+        "updatedAt": "2018-01-01T00:00:00.000Z"
+    } ...
+]
+=============================================================
+/displayOne/:id
+{
+    "id": 1,
+    "title": "Meatloaf",
+    "description": "Meatloaf",
+    "picture": "meatloaf.png",
+    "keyWords": "hamburger",
+    "createdAt": "2018-01-01T00:00:00.000Z",
+    "updatedAt": "2018-01-01T00:00:00.000Z",
+    "Ingredients": [
+        {
+            "id": 1,
+            "recipeID": 1,
+            "itm": 1,
+            "qty": 1,
+            "unitID": 2,
+            "ingredient": "hamburger",
+            "createdAt": "2018-01-01T00:00:00.000Z",
+            "updatedAt": "2018-01-01T00:00:00.000Z",
+            "Unit": {
+                "id": 2,
+                "abbr": "lbs",
+                "unit": "Pounds",
+                "createdAt": "2018-01-01T00:00:00.000Z",
+                "updatedAt": "2018-01-01T00:00:00.000Z"
+            }
+        },
+        {
+            "id": 2,
+            "recipeID": 1,
+            "itm": 2,
+            "qty": 1,
+            "unitID": 3,
+            "ingredient": "Onion",
+            "createdAt": "2018-01-01T00:00:00.000Z",
+            "updatedAt": "2018-01-01T00:00:00.000Z",
+            "Unit": {
+                "id": 3,
+                "abbr": "c",
+                "unit": "Cups",
+                "createdAt": "2018-01-01T00:00:00.000Z",
+                "updatedAt": "2018-01-01T00:00:00.000Z"
+            }
+        }
+    ],
+    "Directions": [
+        {
+            "id": 1,
+            "recipeID": 1,
+            "step": 1,
+            "direction": "Mix everything",
+            "createdAt": "2018-01-01T00:00:00.000Z",
+            "updatedAt": "2018-01-01T00:00:00.000Z"
+        },
+        {
+            "id": 2,
+            "recipeID": 1,
+            "step": 2,
+            "direction": "Put in loaf",
+            "createdAt": "2018-01-01T00:00:00.000Z",
+            "updatedAt": "2018-01-01T00:00:00.000Z"
+        } ...
+    ]
+}
+=============================================================
+/create
+{
+    "dbRecipe": {
+        "id": 7,
+        "title": "New Title",
+        "description": "New description",
+        "picture": "",
+        "keyWords": "",
+        "updatedAt": "2018-03-03T19:59:07.909Z",
+        "createdAt": "2018-03-03T19:59:07.909Z"
+    },
+    "dbUnits": [
+        {
+            "id": 1,
+            "abbr": "oz",
+            "unit": "Ounces",
+            "createdAt": "2018-01-01T00:00:00.000Z",
+            "updatedAt": "2018-01-01T00:00:00.000Z"
+        },
+        {
+            "id": 2,
+            "abbr": "lbs",
+            "unit": "Pounds",
+            "createdAt": "2018-01-01T00:00:00.000Z",
+            "updatedAt": "2018-01-01T00:00:00.000Z"
+        } ...
+    ]
+}
