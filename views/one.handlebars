@@ -1,0 +1,30 @@
+<h1>{{title}}</h1>
+
+<p>
+    <img src="{{picture}}" alt="picture_of_recipe" width="600px" height="600px">
+<p>
+
+<ul>
+  {{#each Ingredients}}
+  <li>
+    <p>
+      {{this.recipeID}}. {{this.itm}}. {{this.qty}}. {{this.unitID}}. {{this.ingredient}}
+    </p>
+  </li>
+  {{/each}}
+</ul>    
+
+<ul>
+  {{#each Directions}}
+  <li>
+    <p>
+      {{this.recipeID}}. {{this.step}}. {{this.direction}}. 
+    </p>
+  </li>
+  {{/each}}
+</ul>
+
+<p>
+      <input type="button" value = "Delete ">
+      <input type="button" value = "Edit ">
+</p>
