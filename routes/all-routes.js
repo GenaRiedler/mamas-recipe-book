@@ -8,6 +8,8 @@
 // Requiring our Mama's Recipe model
 var db = require("../models");
 var fs = require('fs');
+const express = require("express");
+const router = express.Router();
 
 // Routes
 // =============================================================
@@ -26,8 +28,7 @@ module.exports = function(app) {
   app.get("/displayAll", function (req, res){
     db.Recipes.findAll({}).then(dbRecipe =>  {
       console.log("Retrieved id=" + dbRecipe.map(Recipe => Recipe.id))
-      res.json(dbRecipe);
-      // render displayAll.handlebars
+      res.render("all-recipes", {Recipes: dbRecipe})
     });
   })
 
@@ -49,8 +50,7 @@ module.exports = function(app) {
       where: {id: req.params.id}
     }).then(dbRecipe => {
       console.log("Retrieved id=" + dbRecipe.id)
-      res.json(dbRecipe);
-      // render displayOne.handlebars
+      res.render("one-recipe", {Recipes: [dbRecipe]})
     });
   })
 

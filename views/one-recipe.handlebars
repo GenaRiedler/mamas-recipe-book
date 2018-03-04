@@ -1,0 +1,35 @@
+{{#each Recipes}}
+  <div class="row">
+    <div class="col-md-3"><h1>{{title}}</h1></div>
+    <div class="col-md-9">{{description}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <img src="../images/{{picture}}" alt="picture_of_recipe_{{id}}" width="200px">
+    </div>
+    <div class="col-md-3">
+      <h2>Ingredients</h2>
+      <ul>
+        {{#each Ingredients}}
+          <li>
+            {{itm}}. {{qty}}{{Unit.abbr}} - {{ingredient}}
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <h2>Directions</h2>
+      <ul>
+        {{#each Directions}}
+          <li>
+            {{step}}. {{direction}}
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="col-md-2">
+      <input type="button" recipeID={{id}} value="Edit">
+      <input type="button" recipeID={{id}} value="Delete">
+    </div>
+  </div>
+{{/each}}

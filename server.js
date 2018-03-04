@@ -5,6 +5,7 @@
 // *** Dependencies
 // =============================================================
 var express = require("express");
+const exphbs = require("express-handlebars")
 var bodyParser = require("body-parser");
 var fileUpload = require('express-fileupload');
 
@@ -27,6 +28,9 @@ app.use(fileUpload())
 
 // Static directory
 app.use(express.static("public"));
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }))
+app.set("view engine", "handlebars")
 
 // Routes
 // =============================================================
