@@ -60,7 +60,7 @@ module.exports = function(app) {
     db.Recipes.create({
       title: 'New Title',
       description: 'New description',
-      picture: '',
+      picture: 'mamas-recipes.png',
       keyWords: ''
     }).then(dbRecipe => {
       console.log("Created id=" + dbRecipe.id)
