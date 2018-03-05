@@ -11,26 +11,26 @@
       <h2>Ingredients</h2>
       <ul>
         {{#each Ingredients}}
-          <li>
-            {{itm}}. {{qty}}{{Unit.abbr}} - {{ingredient}}
+          <li title="{{qty}}{{Unit.unit}} - {{ingredient}}">
+            {{qty}}{{Unit.abbr}} - {{ingredient}}
           </li>
         {{/each}}
       </ul>
     </div>
     <div class="col-md-4">
       <h2>Directions</h2>
-      <ul>
+      <ol>
         {{#each Directions}}
           <li>
-            {{step}}. {{direction}}
+            {{direction}}
           </li>
         {{/each}}
-      </ul>
+      </ol>
     </div>
     <div class="col-md-2">
-      <input class="gotoView" type="button" recipeID={{id}} value="View">
-      <input class="gotoEdit" type="button" recipeID={{id}} value="Edit">
-      <input class="delete" type="button" recipeID={{id}} value="Delete">
+      <input class="actionButton" type="button" recipeID={{id}} value="View">
+      <input class="actionButton" type="button" recipeID={{id}} value="Edit">
+      <input class="actionButton" type="button" recipeID={{id}} value="Delete">
     </div>
   </div>
 {{/each}}

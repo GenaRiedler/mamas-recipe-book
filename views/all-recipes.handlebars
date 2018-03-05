@@ -4,21 +4,24 @@
         <div class="col-md-5"><h1>Description</h1></div>
         <div class="col-md-2"></div>
     </div>
-<ul>
-    {{#each Recipes}}
-        <div class="row">
-            <li>
-                <div class="col-md-2">
-                    <img src="images/{{picture}}" alt="picture_of_recipe_{{id}}" width="100px">
-                </div>
-                <div class="col-md-3">{{title}}</div>
-                <div class="col-md-5">{{description}}</div>
-                <div class="col-md-2">
-                    <input class="gotoView" type="button" recipeID={{id}} value="View">
-                    <input class="gotoEdit" type="button" recipeID={{id}} value="Edit">
-                    <input class="delete" type="button" recipeID={{id}} value="Delete">
-                </div>
-            </li>
-        </div>
-    {{/each}}
-</ul>
+<div style="overflow-y: scroll; overflow-x: hidden; height:450px;">
+    <ul>
+        {{#each Recipes}}
+            <hr>
+            <div class="row">
+                <li>
+                    <div class="col-md-2">
+                        <img src="images/{{picture}}" alt="picture_of_recipe_{{id}}" width="100px">
+                    </div>
+                    <div class="col-md-3">{{title}}</div>
+                    <div class="col-md-5">{{description}}</div>
+                    <div class="col-md-2">
+                        <input class="actionButton" type="button" recipeID={{id}} value="View">
+                        <input class="actionButton" type="button" recipeID={{id}} value="Edit">
+                        <input class="actionButton" type="button" recipeID={{id}} value="Delete">
+                    </div>
+                </li>
+            </div>
+        {{/each}}
+    </ul>
+</div>
