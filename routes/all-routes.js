@@ -62,10 +62,38 @@ module.exports = function(app) {
       picture: 'mamas-recipes.png',
       keyWords: ''
     }).then(dbRecipe => {
-      console.log("Created id=" + dbRecipe.id)
-      db.Units.findAll({}).then(dbUnits =>  {
-        res.json({dbRecipe, dbUnits});
-        // render updateOne.handlebars
+        db.Ingredients.create({
+          recipeID: dbRecipe.id,
+          itm: 1,
+          qty: 0,
+          unitID: 1,
+          ingredient: "nothing"
+      }).then(dbIngredients => {
+        db.Directions.create({
+          recipeID: dbRecipe.id,
+          step: 1,
+          direction: "nothing to do"
+        }).then(dbDirections => {
+          db.Recipes.findOne({
+            include: [
+              {
+                model: db.Ingredients,
+                include: [
+                  {
+                    model: db.Units,
+                  }
+                ]
+              },{
+                model: db.Directions
+              }
+            ],
+            where: {id: dbRecipe.id}
+          }).then(dbRecipe => {
+            db.Units.findAll({}).then(dbUnits =>  {
+              res.render("edit-recipe", {Recipes: [dbRecipe], Units: dbUnits});
+            });
+          });
+        });
       });
     });
   })
@@ -103,8 +131,7 @@ module.exports = function(app) {
     }).then(dbRecipe => {
       console.log("Updated id=" + dbRecipe.id)
       db.Units.findAll({}).then(dbUnits =>  {
-        res.json({dbRecipe, dbUnits});
-        // render updateOne.handlebars
+        res.render("edit-recipe", {Recipes: [dbRecipe], Units: dbUnits});
       });
     });
   })

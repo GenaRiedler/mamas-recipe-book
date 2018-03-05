@@ -12,6 +12,9 @@ $(document).ready(function() {
 		    case "Delete":
 				window.location.href = "delete/" + $(this)[0].attributes.recipeID.value
 				break;
+		    case "Save":
+		    	// Need to post changes
+				break;
 			default:
 				window.location.href = "/"
 		}

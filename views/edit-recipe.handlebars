@@ -1,0 +1,98 @@
+{{#each Recipes}}
+  <div class="row">
+    <div class="col-md-3"><h1>{{title}}</h1></div>
+    <div class="col-md-9">{{description}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <img src="../images/{{picture}}" alt="picture_of_recipe_{{id}}" width="200px">
+    </div>
+    <div class="col-md-3">
+      <h2>Ingredients</h2>
+      <form class="form">
+        <div class="sort-container">
+          {{#each Ingredients}}
+            <div class="sort-item">
+              <input type="hidden" class="sort-order-value" id="form-field-01-sort-order" name="sort-order[]" value={{itm}}>
+              <div class="input-group">
+                <input type="text" value="{{qty}}" maxlength="4" size="4">
+                <input type="text" value="{{Unit.abbr}}" maxlength="4" size="4">
+                <input type="text" value="{{ingredient}}" maxlength="19" size="19">
+                <div class="input-group-addon delHandle"><span class="glyphicon glyphicon-remove"></span></div>
+                <div class="input-group-addon dragdrop-handle"><span class="glyphicon glyphicon-move"></span></div>
+              </div>
+            </div>
+          {{/each}}
+        </div><!-- /.sort-container -->
+        <div class="input-group">
+          <div class="input-group-addon addHandle"><span class="glyphicon glyphicon-plus"></span></div>
+        </div>
+      </form>
+
+    </div>
+    <div class="col-md-4">
+      <h2>Directions</h2>
+      <form class="form">
+        <div class="sort-container">
+          {{#each Directions}}
+            <div class="sort-item">
+              <input type="hidden" class="sort-order-value" name="sort-order[]" value={{step}}>
+              <div class="input-group">
+                <input type="text" value="{{direction}}" maxlength="50" size="50">
+                <div class="input-group-addon delHandle"><span class="glyphicon glyphicon-remove"></span></div>
+                <div class="input-group-addon dragdrop-handle"><span class="glyphicon glyphicon-move"></span></div>
+              </div>
+            </div>
+          {{/each}}
+        </div><!-- /.sort-container -->
+        <div class="input-group">
+          <div class="input-group-addon addHandle"><span class="glyphicon glyphicon-plus"></span></div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-2">
+      <input class="actionButton" type="button" recipeID={{id}} value="Save">
+    </div>
+  </div>
+{{/each}}
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script type="application/javascript">
+$(document).ready(function () {
+    $('.addHandle').on("click", function() {
+        var itmList = $(this).parent().siblings().first()
+        var grpItem = itmList.children().last()
+        var newItem = grpItem.clone().appendTo(itmList)
+        grpItem.children().first().value++
+        src = newItem.children().last().children('input')
+       for (i=0; i<src.length; i++) {
+            src[i].value = ''
+        }
+        itmList.sortable('refresh');
+     });
+
+    $('div.sort-container').on("click", "div.delHandle", function() {
+        if ($(this).parent().parent().parent().children().length > 1) {
+            $(this).parent().parent().remove()
+        }
+    });
+
+    $('.sort-container').sortable({
+        placeholder: "ui-state-highlight",
+        handle: ".dragdrop-handle",
+        opacity: 0.5,
+        cursor: "move",
+        update: function (event, ui) {
+            $('.sort-order-value').each(function (index, value) {
+                console.log(index);
+                $(value).val(index + 1);
+            });
+        }
+    });
+    $('.sort-container').disableSelection();
+
+
+});
+</script>

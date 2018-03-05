@@ -20,11 +20,12 @@ module.exports = function(sequelize, DataTypes) {
     },
     qty: {
       type: DataTypes.INTEGER(11),
+      default: 0,
       allowNull: false
     },
     unitID: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'units',
         key: 'id'
