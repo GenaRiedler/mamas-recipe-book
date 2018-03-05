@@ -1,0 +1,73 @@
+body { 
+    background-image: url('../images/gingham-mint.png'); 
+    font-family: 'Open Sans', sans-serif;
+}
+h1 { 
+    color: #ff002a; 
+    font-family: 'Great Vibes', cursive; 
+    font-size: 50px; 
+}
+h3 { 
+    color: #ff002a; 
+    text-transform: uppercase; 
+    font-weight: 800; 
+    font-size: 14px; 
+}
+input select { 
+    width: auto;
+}
+.navbar{
+    background :#ff002a;
+    border:#ff002a;
+    color:black;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+    background:#ff002a;
+    border:#ff002a;
+}
+
+.panel-primary>.panel-heading{
+    background:#8cf6e3;
+    border:#8cf6e3;
+    color:black;
+}
+.panel-primary{
+    border:#8cf6e3;
+}
+.navbar-inverse .navbar-nav>li>a{
+    color:black;
+}
+
+.navbar-inverse .navbar-brand{
+    color:black;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
+    color:black;
+    background:#ff002a;
+}
+
+#sortable { 
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    width: 60%; 
+}
+.ui-state-highlight { 
+    height: 2em; 
+    line-height: 1.2em; 
+}
+.sort-item { 
+    margin: 10px 0px 10px 0px; 
+}
+.sort-container { 
+    margin: 0px; 
+    padding: 0px; 
+}
+.container { 
+    background-color: white; 
+    padding: 30px; 
+    border-radius: 20px; 
+}
+
