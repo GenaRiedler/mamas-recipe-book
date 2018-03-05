@@ -8,52 +8,25 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  <style>
-    .navbar{
-      background :#ff002a;
-      border:#ff002a;
-      color:black;
-    }
+  <link rel="stylesheet" href="css/navbar.css">
+  <script src="js/buttonsViewEditDelete.js"></script>
 
-    .navbar-inverse .navbar-nav > .active > a {
-      background:#ff002a;
-      border:#ff002a;
-    }
-
-    .panel-primary>.panel-heading{
-      background:#8cf6e3;
-      border:#8cf6e3;
-      color:black;
-    }
-    .panel-primary{
-      border:#8cf6e3;
-    }
-    .navbar-inverse .navbar-nav>li>a{
-    color:black;
-    }
-
-    .navbar-inverse .navbar-brand{
-    color:black;
-    }
-
-    .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
-    color:black;
-    background:#ff002a;
-    }
-
-</style>
 </head>
 <body>
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Mama's Recipe Book</a>
+      <a class="navbar-brand" href="/">Mama's Recipe Book</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
+      <li><a href="/displayAll">All Recipes</a></li>
+      <li></li>
+      <li><a href="/create">New Recipe</a></li>
+      <li></li>
       <li><a href="#">About</a></li>
       <li><a href="#">Contact</a></li>
+<!--
       <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -66,6 +39,7 @@
                 <li><a href="#">One more separated link</a></li>
             </ul>
         </li>
+-->
       </ul>
   </div>
 </nav>

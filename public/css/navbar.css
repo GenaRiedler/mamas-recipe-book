@@ -1,0 +1,31 @@
+.navbar{
+  background :#ff002a;
+  border:#ff002a;
+  color:black;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+  background:#ff002a;
+  border:#ff002a;
+}
+
+.panel-primary>.panel-heading{
+  background:#8cf6e3;
+  border:#8cf6e3;
+  color:black;
+}
+.panel-primary{
+  border:#8cf6e3;
+}
+.navbar-inverse .navbar-nav>li>a{
+color:black;
+}
+
+.navbar-inverse .navbar-brand{
+color:black;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
+color:black;
+background:#ff002a;
+}

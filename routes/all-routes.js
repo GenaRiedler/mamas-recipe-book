@@ -19,8 +19,7 @@ module.exports = function(app) {
   app.get("/", function(req, res){
     db.Recipes.findAll({}).then(dbRecipe => {
       console.log("Retrieved id=" + dbRecipe.map(Recipe => Recipe.id))
-      res.json(dbRecipe);
-      // render carousel.handlebars
+      res.render("carousel", {Recipes: dbRecipe})
     });
   });
 
