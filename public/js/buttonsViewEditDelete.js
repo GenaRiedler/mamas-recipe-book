@@ -1,19 +1,19 @@
 // View/Edit/Delete buttons
 
 $(document).ready(function() {
-
-	$(".gotoView").on("click", function() {
-		// var url = "desplayOne/" + $(this).context.recipeID
-	 //    $.get(url)
+	$(".actionButton").on("click", function() {
+		switch($(this)[0].value) {
+		    case "View":
+				window.location.href = "displayOne/" + $(this)[0].attributes.recipeID.value
+		        break;
+		    case "Edit":
+				window.location.href = "update/" + $(this)[0].attributes.recipeID.value
+		        break;
+		    case "Delete":
+				window.location.href = "delete/" + $(this)[0].attributes.recipeID.value
+				break;
+			default:
+				window.location.href = "/"
+		}
 	})
-
-	$(".gotoEdit").on("click", function() {
-		// var url = "desplayOne/" + $(this).context.value
-		// $.get(url)
-	})
-
-	$(".delete").on("click", function() {
-		// do nothing for now
-	})
-
 })

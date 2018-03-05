@@ -78,8 +78,7 @@ module.exports = function(app) {
     }).then(dbRecipe => {
       console.log("Deleted id=" + req.params.id)
       db.Recipes.findAll({}).then(dbRecipe =>  {
-        res.json(dbRecipe);
-        // render displayAll.handlebars
+        res.render("all-recipes", {Recipes: dbRecipe})
       });
     });
   })
