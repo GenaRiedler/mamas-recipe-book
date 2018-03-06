@@ -57,7 +57,7 @@ CREATE TABLE Directions(
 INSERT INTO Units (abbr, unit, createdAt, updatedAt)
 VALUES
 	("oz", "Ounces", "2018-01-01 00:00", "2018-01-01 00:00"),
-	("lbs", "Pounds", "2018-01-01 00:00", "2018-01-01 00:00"),
+	("lb", "Pounds", "2018-01-01 00:00", "2018-01-01 00:00"),
 	("c", "Cups", "2018-01-01 00:00", "2018-01-01 00:00"),
 	("qt", "Quarts", "2018-01-01 00:00", "2018-01-01 00:00"),
 	("gal", "Gallons", "2018-01-01 00:00", "2018-01-01 00:00"),
@@ -68,13 +68,15 @@ VALUES
 INSERT INTO Recipes (title, description, picture, keyWords, createdAt, updatedAt)
 VALUES
 	("Meatloaf",			"Meatloaf",				"meatloaf.png",		"hamburger", "2018-01-01 00:00", "2018-01-01 00:00"),
-	("Chicken Soup", 		"Chicken Soup", 		"chickensoup",		"chicken, soup", "2018-01-01 00:00", "2018-01-01 00:00"),
-	("Deep Fried Turkey", 	"Deep Fried Turkey", 	"deepfriedturkey",	"turkey", "2018-01-01 00:00", "2018-01-01 00:00");
+	("Chicken Soup", 		"Chicken Soup", 		"chickensoup.png",		"chicken, soup", "2018-01-01 00:00", "2018-01-01 00:00"),
+	("Deep Fried Turkey", 	"Deep Fried Turkey", 	"deepfriedturkey.png",	"turkey", "2018-01-01 00:00", "2018-01-01 00:00");
 
 INSERT INTO Ingredients (recipeID, itm, qty, unitID, ingredient, createdAt, updatedAt)
 VALUES
 	(1,	1,	1,	2,	"hamburger", "2018-01-01 00:00", "2018-01-01 00:00"),
-    (1,	2,	1,	3,	"Onion", "2018-01-01 00:00", "2018-01-01 00:00");
+    (1,	2,	1,	3,	"Onion", "2018-01-01 00:00", "2018-01-01 00:00"),
+    (2,	1,	0,	1,	"", "2018-01-01 00:00", "2018-01-01 00:00"),
+    (3,	1,	0,	1,	"", "2018-01-01 00:00", "2018-01-01 00:00");
     
 INSERT INTO Directions (recipeID, step, direction, createdAt, updatedAt)
 VALUES
@@ -82,4 +84,6 @@ VALUES
     (1,	2,	"Put in loaf", "2018-01-01 00:00", "2018-01-01 00:00"),
     (1,	3,	"Bake at 350 for an hour", "2018-01-01 00:00", "2018-01-01 00:00"),
     (1,	4,	"Set aside for 15 mins", "2018-01-01 00:00", "2018-01-01 00:00"),
-    (1, 5,	"Enjoy", "2018-01-01 00:00", "2018-01-01 00:00");
+    (1, 5,	"Enjoy", "2018-01-01 00:00", "2018-01-01 00:00"),
+    (2,	1,	"", "2018-01-01 00:00", "2018-01-01 00:00"),
+    (3,	1,	"", "2018-01-01 00:00", "2018-01-01 00:00");

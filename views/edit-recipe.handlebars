@@ -1,11 +1,19 @@
 {{#each Recipes}}
   <div class="row">
-    <div class="col-md-3"><h1>{{title}}</h1></div>
-    <div class="col-md-9">{{description}}</div>
+    <div class="col-md-3"><h1><input type="text" value="{{title}}" maxlength="50" size="15"></h1></div>
+    <div class="col-md-9"><input type="text" value="{{description}}" maxlength="50" size="50"></div>
   </div>
   <div class="row">
     <div class="col-md-3">
       <img src="../images/{{picture}}" alt="picture_of_recipe_{{id}}" width="200px">
+      <form ref='uploadForm'
+        id='uploadForm'
+        action='http://localhost:8080/image'
+        method='post'
+        encType="multipart/form-data">
+          <input type="file" name="sampleFile" />
+          <input type='submit' value='Upload!' />
+      </form>
     </div>
     <div class="col-md-3">
       <h2>Ingredients</h2>
@@ -13,7 +21,7 @@
         <div class="sort-container">
           {{#each Ingredients}}
             <div class="sort-item">
-              <input type="hidden" class="sort-order-value" id="form-field-01-sort-order" name="sort-order[]" value={{itm}}>
+              <input type="hidden" class="sort-order-value" name="sort-order[]" value={{itm}}>
               <div class="input-group">
                 <input type="text" value="{{qty}}" maxlength="4" size="4">
                 <input type="text" value="{{Unit.abbr}}" maxlength="4" size="4">
@@ -76,6 +84,7 @@ $(document).ready(function () {
     $('div.sort-container').on("click", "div.delHandle", function() {
         if ($(this).parent().parent().parent().children().length > 1) {
             $(this).parent().parent().remove()
+            $(this).parent().siblings().first().sortable('refresh')
         }
     });
 
@@ -92,7 +101,6 @@ $(document).ready(function () {
         }
     });
     $('.sort-container').disableSelection();
-
 
 });
 </script>

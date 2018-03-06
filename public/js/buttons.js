@@ -11,6 +11,7 @@ $(document).ready(function() {
 		        break;
 		    case "Delete":
 				window.location.href = "delete/" + $(this)[0].attributes.recipeID.value
+				window.location.href = "displayAll"
 				break;
 		    case "Save":
 		    	// Need to post changes
