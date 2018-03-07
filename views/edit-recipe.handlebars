@@ -1,22 +1,37 @@
-{{#each Recipes}}
-  <div class="row">
-    <div class="col-md-3"><h1><input type="text" value="{{title}}" maxlength="50" size="15"></h1></div>
-    <div class="col-md-9"><input type="text" value="{{description}}" maxlength="50" size="50"></div>
+<div class="container">
+  <div class="row text-center">
+            <h1>Edit Your Recipe</h1>
+            <p>Enter your favorite recipe's ingredients and directions below. Drag and Drop on the items move icon to change
+                its order. Delete the item by clicking on the remove icon.</p>
   </div>
+
+{{#each Recipes}}
+<form>
   <div class="row">
-    <div class="col-md-3">
-      <img src="../images/{{picture}}" alt="picture_of_recipe_{{id}}" width="200px">
-      <form ref='uploadForm'
-        id='uploadForm'
-        action='http://localhost:8080/image/{{id}}'
-        method='post'
-        encType="multipart/form-data">
-          <input type="file" name="sampleFile" />
-          <input type='submit' value='Upload!' />
-      </form>
+    <div class="col-md-4">
+      <div class="input-group-sm">
+        <h3>Recipe Title</h3>
+        <input type="text" value="{{title}}" class="form-control" id="titleInput">
+        <h3>Description</h3>
+        <input type="text" value="{{description}}" class="form-control" id="descInput">
+      </div>
+   
+      <div class=""> <!--Image upload-->
+        <div class="">
+          <img src="../images/{{picture}}" alt="picture_of_recipe_{{id}}" height="200px">
+          <form ref='uploadForm'
+            id='uploadForm'
+            action='http://localhost:8080/image/{{id}}'
+            method='post'
+            encType="multipart/form-data">
+              <input class="form-control" type="file" name="sampleFile" />
+              <input class="btn btn-default btn-sm" type='submit' value='Upload!'>
+          </form>
+        </div>
+      </div>
     </div>
-    <div class="col-md-3">
-      <h2>Ingredients</h2>
+    <div class="col-md-8">
+      <h3>Ingredients</h3>
       <form class="form">
         <div class="sort-container">
           {{#each Ingredients}}
@@ -33,20 +48,20 @@
           {{/each}}
         </div><!-- /.sort-container -->
         <div class="input-group">
-          <div class="input-group-addon addHandle"><span class="glyphicon glyphicon-plus"></span></div>
+          <div class="btn btn-default btn-sm addHandle">Add an Ingredient <span class="glyphicon glyphicon-plus"></span></div>
         </div>
       </form>
 
     </div>
     <div class="col-md-4">
-      <h2>Directions</h2>
+      <h3>Directions</h3>
       <form class="form">
         <div class="sort-container">
           {{#each Directions}}
             <div class="sort-item">
               <input type="hidden" class="sort-order-value" name="sort-order[]" value={{step}}>
               <div class="input-group">
-                <input type="text" value="{{direction}}" maxlength="50" size="50">
+                <textarea type="text" value="{{direction}}" maxlength="150" rows="1" cols="50"></textarea>
                 <div class="input-group-addon delHandle"><span class="glyphicon glyphicon-remove"></span></div>
                 <div class="input-group-addon dragdrop-handle"><span class="glyphicon glyphicon-move"></span></div>
               </div>
@@ -54,15 +69,20 @@
           {{/each}}
         </div><!-- /.sort-container -->
         <div class="input-group">
-          <div class="input-group-addon addHandle"><span class="glyphicon glyphicon-plus"></span></div>
+          <div class="btn btn-default btn-sm addHandle">Add a Direction <span class="glyphicon glyphicon-plus"></span></div>
         </div>
       </form>
     </div>
+      </div>
+
     <div class="col-md-2">
       <input class="actionButton" type="button" recipeID={{id}} value="Save">
     </div>
   </div>
 {{/each}}
+</form>
+</div>
+
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
