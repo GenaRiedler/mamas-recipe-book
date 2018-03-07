@@ -37,7 +37,7 @@ var deleteGreaterThan = function(model, whereClause) {
   model.destroy({
     where: whereClause
   }).catch(err => {
-    console.log(model.Name, whereClause, newData)
+    console.log(model.Name, whereClause)
     throw err
   })
 }
@@ -217,7 +217,7 @@ module.exports = function(app) {
       deleteGreaterThan(
         db.Directions,
         { recipeID: MyRecipeID,
-          itm:  {[Op.gt]: MyDirections.length}}
+          step:  {[Op.gt]: MyDirections.length}}
       )
     }
     catch (err) {
