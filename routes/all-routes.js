@@ -10,6 +10,37 @@ var db = require("../models");
 var fs = require('fs');
 const express = require("express");
 const router = express.Router();
+const Op = db.Sequelize.Op
+
+var createOrUpdate = function(model, whereClause, newData) {
+  model.findOne({
+    where: whereClause
+  }).then(foundItem => {
+    if (!foundItem) { // Item not found, create a new one
+      model.create(newData).catch(err => {
+        console.log(model.Name, whereClause, newData)
+        throw err
+      })
+    } else {          // Found an item, update it
+      model.update(newData, {where: whereClause}).catch(err => {
+        console.log(model.Name, whereClause, newData)
+        throw err
+      })
+    }
+  }).catch(err => {
+    console.log(model.Name, whereClause, newData)
+    throw err
+  });
+}
+
+var deleteGreaterThan = function(model, whereClause) {
+  model.destroy({
+    where: whereClause
+  }).catch(err => {
+    console.log(model.Name, whereClause, newData)
+    throw err
+  })
+}
 
 // Routes
 // =============================================================
@@ -138,60 +169,62 @@ module.exports = function(app) {
 
   // Save Changes from update display to Database
   app.post("/Save/:id", function(req, res) {
-    MyRecipeID = req.params.id
-    MyRecipes = req.body.Recipes
-    MyIngredients = req.body.Ingredients
-    MyDirections = req.body.Directions
+    var MyRecipeID = req.params.id
+    var MyRecipes = req.body.Recipes
+    var MyIngredients = req.body.Ingredients
+    var MyDirections = req.body.Directions
 
-    // Update Recipe
-    db.Recipes.findOrCreate({
-        where: { id:  MyRecipeID}
-      }).then (Recipe => {
-          Recipe.updateAttributes({
-            title: MyRecipes.title,
-            description: MyRecipes.description,
-            picture: MyRecipes.picture,
-            keyWords: MyRecipes.keyWords
-          })
-      })
+    try {
+      createOrUpdate(
+        db.Recipes,
+        { id:  MyRecipeID },
+        { title: MyRecipes.title,
+          description: MyRecipes.description,
+          picture: MyRecipes.picture,
+          keyWords: MyRecipes.keyWords }
+      )
 
-      // Update/Delete Ingredients
-      req.Ingredients.forEach((ingredient, index) => {
-        db.Ingredients.findOrCreate({
-            where: {  recipeID: MyRecipeID,
-                      itm:  index+1}
-          }).then (Ingredient => {
-              Recipe.updateAttributes({
-                recipeID: MyRecipeID,
-                itm:  index+1,
-                qty: MyIngredients.qty,
-                unitID: MyIngredients.unitID,
-                ingredient: MyIngredients.ingredient
-              })
-          })
-      })
-      db.Ingredients.destroy({
-          where: {  recipeID: MyRecipeID,
-                    itm:  {[Op.gt]: MyIngredients.length}}
+      MyIngredients.forEach((oneIngredient, index) => {
+        createOrUpdate(
+          db.Ingredients,
+          { recipeID: MyRecipeID,
+            itm:  index+1 },
+          { recipeID: MyRecipeID,
+            itm:  index+1,
+            qty: oneIngredient.qty,
+            unitID: oneIngredient.unitID,
+            ingredient: oneIngredient.ingredient }
+        )
       })
 
-      // Update/Delete Ingredients
-      req.Directions.forEach((direction, index) => {
-        db.Directions.findOrCreate({
-            where: {  recipeID: MyRecipeID,
-                      step:  index+1}
-          }).then (Direction => {
-              Direction.updateAttributes({
-                recipeID: MyRecipeID,
-                step:  index+1,
-                direction: MyDirections.direction
-              })
-          })
+      deleteGreaterThan(
+        db.Ingredients,
+        { recipeID: MyRecipeID,
+          itm:  {[Op.gt]: MyIngredients.length}}
+      )
+
+      MyDirections.forEach((direction, index) => {
+        createOrUpdate(
+          db.Directions,
+          { recipeID: MyRecipeID,
+            step:  index+1 },
+          { recipeID: MyRecipeID,
+            step:  index+1,
+            direction: direction.direction }
+          )
       })
-      db.Directions.destroy({
-          where: {  recipeID: MyRecipeID,
-                    step:  {[Op.gt]: MyDirections.length}}
-      })
+
+      deleteGreaterThan(
+        db.Directions,
+        { recipeID: MyRecipeID,
+          itm:  {[Op.gt]: MyDirections.length}}
+      )
+    }
+    catch (err) {
+      console.log("ooopppsss", err)
+      return res.send(500)
+    }
+    return res.send(200)
   })
 
   // Update Database from update display
