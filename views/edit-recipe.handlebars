@@ -15,7 +15,7 @@
         <h3>Description</h3>
         <input type="text" value="{{description}}" class="form-control" id="descInput">
       </div>
-   
+
       <div class=""> <!--Image upload-->
         <div class="">
           <img src="../images/{{picture}}" alt="picture_of_recipe_{{id}}" height="200px">
@@ -61,7 +61,7 @@
             <div class="sort-item">
               <input type="hidden" class="sort-order-value" name="sort-order[]" value={{step}}>
               <div class="input-group">
-                <textarea type="text" value="{{direction}}" maxlength="150" rows="1" cols="50"></textarea>
+                <textarea type="text" maxlength="150" rows="1" cols="50" style="resize: both">{{direction}}</textarea>
                 <div class="input-group-addon delHandle"><span class="glyphicon glyphicon-remove"></span></div>
                 <div class="input-group-addon dragdrop-handle"><span class="glyphicon glyphicon-move"></span></div>
               </div>
