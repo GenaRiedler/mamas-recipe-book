@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,155 +24,172 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+
 <body>
 
-<div class="container rounded">
+    <div class="container rounded" style="height:768px">
 
-    <div class="row text-center">
-        <h1>Add a Recipe</h1>
-        <p>Enter your favorite recipe's ingredients and directions below. Drag and Drop on the items move icon to change its order. Delete the item by clicking on the remove icon.</p>
-    </div>
-    
-    <form class="form form-group">
+        <div class="row text-center">
+            <h1>Add a Recipe</h1>
+            <p>Enter your favorite recipe's ingredients and directions below. Drag and Drop on the items move icon to change
+                its order. Delete the item by clicking on the remove icon.</p>
+        </div>
 
-        <div class="input-group-sm">
-        <h3>Recipe Title</h3>
-        <input type="text" class="form-control" placeholder="Recipe Title" aria-label="" aria-describedby="basic-addon1">
-        <h3>Description</h3>
-        <input type="text" class="form-control" placeholder="Recipe Description" aria-label="" aria-describedby="basic-addon1">
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <h3>Ingredients</h3>
-                <div class="sort-container" id="ing-sort-container">
-                    <div class="row">
-                        <div class="sort-item col-md-12 remove-target">
-                            <input type="hidden" class="sort-order-value" id="form-field-01-sort-order" name="sort-order[]" value="1">
-                            <span class="form-group form-group-sm form-inline">
-                                <div class="col-md-2 input-group">
-                                    <input type="text" class="form-control" placeholder="Qty" aria-label="" aria-describedby="">
-                                </div>
-                                <div class="col-md-2 input-group">
-                                    <select class="form-control input-sm" placeholder="Units" aria-label="" aria-describedby="">
-                                        <option>tsp</option>
-                                        <option>tblsp</option>
-                                        <option>cups</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-7 input-group input-group-sm">
-                                    <input type="text" class="form-control" placeholder="Ingredient A" aria-label="" aria-describedby="">
-                                <div class="input-group-addon dragdrop-handle"><span class="glyphicon glyphicon-move"></span></div>
-                                <div class="input-group-addon delete-handle"><span class="glyphicon glyphicon-remove"></span></div>
+        <form class="form form-group">
+
+            <div class="input-group-sm">
+                <h3>Recipe Title</h3>
+                <input type="text" class="form-control" placeholder="Recipe Title" aria-label="" aria-describedby="basic-addon1">
+                <h3>Description</h3>
+                <input type="text" class="form-control" placeholder="Recipe Description" aria-label="" aria-describedby="basic-addon1">
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Ingredients</h3>
+                    <div class="sort-container" id="ing-sort-container">
+                        <div class="row">
+                            <div class="sort-item col-md-12 remove-target">
+                                <input type="hidden" class="sort-order-value" id="form-field-01-sort-order" name="sort-order[]" value="1">
+                                <span class="form-group form-group-sm form-inline">
+                                    <div class="col-md-2 input-group">
+                                        <input type="text" class="form-control" placeholder="Qty" aria-label="" aria-describedby="">
+                                    </div>
+                                    <div class="col-md-2 input-group">
+                                        <select class="form-control input-sm" placeholder="Units" aria-label="" aria-describedby="">
+                                            <option>tsp</option>
+                                            <option>tblsp</option>
+                                            <option>cups</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-7 input-group input-group-sm">
+                                        <input type="text" class="form-control" placeholder="Ingredient A" aria-label="" aria-describedby="">
+                                        <div class="input-group-addon dragdrop-handle">
+                                            <span class="glyphicon glyphicon-move"></span>
+                                        </div>
+                                        <div class="input-group-addon delete-handle">
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        </div>
+                                    </div>
+                                </span>
                             </div>
-                            </span>
                         </div>
                     </div>
-                </div><!-- /.sort-container -->
-                <button type="button" class="btn btn-default btn-sm" id="add-ing-field-button"><span class="glyphicon glyphicon-plus"></span> Ingredient</button>
-        </div><!-- /.col-md-4 -->
-        <div class="col-md-8">
-        <h3>Directions</h3>
-                <div class="sort-container" id="desc-sort-container">
-                    <div class="sort-item remove-target">
-                        <input type="hidden" class="sort-order-value" id="form-field-01-sort-order" name="sort-order[]" value="1">
-                         <div class="input-group input-group-sm">
-                            <label for="form-field-01"></label>
-                            <input type="text" class="form-control" placeholder="Direction A" aria-label="" aria-describedby="basic-addon1">
-                            <div class="input-group-addon dragdrop-handle"><span class="glyphicon glyphicon-move"></span></div>
-                            <div class="input-group-addon delete-handle"><span class="glyphicon glyphicon-remove"></span></div>
+                    <!-- /.sort-container -->
+                    <button type="button" class="btn btn-default btn-sm" id="add-ing-field-button">
+                        <span class="glyphicon glyphicon-plus"></span> Ingredient</button>
+                </div>
+                <!-- /.col-md-4 -->
+                <div class="col-md-8">
+                    <h3>Directions</h3>
+                    <div class="sort-container" id="desc-sort-container">
+                        <div class="sort-item remove-target">
+                            <input type="hidden" class="sort-order-value" id="form-field-01-sort-order" name="sort-order[]" value="1">
+                            <div class="input-group input-group-sm">
+                                <label for="form-field-01"></label>
+                                <input type="text" class="form-control" placeholder="Direction A" aria-label="" aria-describedby="basic-addon1">
+                                <div class="input-group-addon dragdrop-handle">
+                                    <span class="glyphicon glyphicon-move"></span>
+                                </div>
+                                <div class="input-group-addon delete-handle">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </div>
+                            </div>
                         </div>
-					</div>
-                </div><!-- /.sort-container -->
-				<button type="button" class="btn btn-default btn-sm" id="add-desc-field-button"><span class="glyphicon glyphicon-plus"></span> Direction</button>
+                    </div>
+                    <!-- /.sort-container -->
+                    <button type="button" class="btn btn-default btn-sm" id="add-desc-field-button">
+                        <span class="glyphicon glyphicon-plus"></span> Direction</button>
 
-        </div><!-- /.col-md-4 -->
-    </form>
+                </div>
+                <!-- /.col-md-4 -->
+        </form>
 
+        </div>
     </div>
-</div>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script type="application/javascript">
-$(document).ready(function () {
-    var max_fields      = 25; //maximum input boxes allowed
-    var ingWrapper      = $("#ing-sort-container"); //Ingredients fields wrapper
-    var descWrapper     = $("#desc-sort-container"); //Description fields wrapper
-    var addIngButton    = $("#add-ing-field-button"); //Add button ID
-    var addDescButton    = $("#add-desc-field-button"); //Add button ID
-    var x               = 1; //Initlal text box count
-    var addIngInput = '<div class="row">' +
-                        '<div class="sort-item col-md-12 remove-target">' + 
-                            '<input type="hidden" class="sort-order-value" id="form-field-0' + x + '-sort-order" name="sort-order[]" value="'+ x + '">' +
-                            '<span class="form-group form-group-sm form-inline">' +
-                                '<div class="col-md-2 input-group">' +
-                                    '<input type="text" class="form-control" placeholder="Qty" aria-label="" aria-describedby="">' +
-                                '</div>' +
-                                '<div class="col-md-2 input-group">' +
-                                    '<select class="form-control input-sm" placeholder="Units" aria-label="" aria-describedby="">' +
-                                        '<option>tsp</option>' +
-                                        '<option>tblsp</option>' +
-                                        '<option>cups</option>' +
-                                '</select>' +
-                                '</div>' +
-                                '<div class="col-md-7 input-group input-group-sm">' +
-                                    '<input type="text" class="form-control" placeholder="Ingredient A" aria-label="" aria-describedby="">' +
-                                    '<div class="input-group-addon dragdrop-handle"><span class="glyphicon glyphicon-move"></span></div>' +
-                                    '<div class="input-group-addon delete-handle"><span class="glyphicon glyphicon-remove"></span></div>' +
-                                '</div>' +
-                            '</span>' +
-                        '</div>' +
-                    '</div>';
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="application/javascript">
+        $(document).ready(function () {
+            var max_fields = 25; //maximum input boxes allowed
+            var ingWrapper = $("#ing-sort-container"); //Ingredients fields wrapper
+            var descWrapper = $("#desc-sort-container"); //Description fields wrapper
+            var addIngButton = $("#add-ing-field-button"); //Add button ID
+            var addDescButton = $("#add-desc-field-button"); //Add button ID
+            var x = 1; //Initlal text box count
+            var addIngInput = '<div class="row">' +
+                '<div class="sort-item col-md-12 remove-target">' +
+                '<input type="hidden" class="sort-order-value" id="form-field-0' + x + '-sort-order" name="sort-order[]" value="' + x + '">' +
+                '<span class="form-group form-group-sm form-inline">' +
+                '<div class="col-md-2 input-group">' +
+                '<input type="text" class="form-control" placeholder="Qty" aria-label="" aria-describedby="">' +
+                '</div>' +
+                '<div class="col-md-2 input-group">' +
+                '<select class="form-control input-sm" placeholder="Units" aria-label="" aria-describedby="">' +
+                '<option>tsp</option>' +
+                '<option>tblsp</option>' +
+                '<option>cups</option>' +
+                '</select>' +
+                '</div>' +
+                '<div class="col-md-7 input-group input-group-sm">' +
+                '<input type="text" class="form-control" placeholder="Ingredient A" aria-label="" aria-describedby="">' +
+                '<div class="input-group-addon dragdrop-handle"><span class="glyphicon glyphicon-move"></span></div>' +
+                '<div class="input-group-addon delete-handle"><span class="glyphicon glyphicon-remove"></span></div>' +
+                '</div>' +
+                '</span>' +
+                '</div>' +
+                '</div>';
 
-    var addDescInput = '<div class="sort-item remove-target">' +
-                        '<input type="hidden" class="sort-order-value" id="form-field-0' + x + '-sort-order" name="sort-order[]" value="' + x + '">' +
-                         '<div class="input-group input-group-sm">' +
-                            '<label for="form-field-01"></label>' +
-                            '<input type="text" class="form-control" placeholder="Direction A" aria-label="" aria-describedby="basic-addon1">' +
-                            '<div class="input-group-addon dragdrop-handle"><span class="glyphicon glyphicon-move"></span></div>' +
-                            '<div class="input-group-addon delete-handle"><span class="glyphicon glyphicon-remove"></span></div>' +
-                        '</div>' +
-					'</div>';  
-    
-    
-    $(addIngButton).click(function(e){ //on add input button click
-        e.preventDefault();
-        if(x < max_fields){ //max input box allowed
-            x++; //text box increment
-            $(ingWrapper).append($(addIngInput)); //add input box
-        }
-    });
-    $(addDescButton).click(function(e){ //on add input button click
-        e.preventDefault();
-        if(x < max_fields){ //max input box allowed
-            x++; //text box increment
-            $(descWrapper).append($(addDescInput)); //add input box
-        }
-    });
-    $('.remove-target').on("click",".delete-handle", function(e){ //user click on remove text
-        e.preventDefault(); 
-        $(this).parent('div').remove(); 
-        x--;
-        console.log(this)
-    });
+            var addDescInput = '<div class="sort-item remove-target">' +
+                '<input type="hidden" class="sort-order-value" id="form-field-0' + x + '-sort-order" name="sort-order[]" value="' + x + '">' +
+                '<div class="input-group input-group-sm">' +
+                '<label for="form-field-01"></label>' +
+                '<input type="text" class="form-control" placeholder="Direction A" aria-label="" aria-describedby="basic-addon1">' +
+                '<div class="input-group-addon dragdrop-handle"><span class="glyphicon glyphicon-move"></span></div>' +
+                '<div class="input-group-addon delete-handle"><span class="glyphicon glyphicon-remove"></span></div>' +
+                '</div>' +
+                '</div>';
 
-    $('.sort-container').sortable({
-        placeholder: "ui-state-highlight",
-        handle: ".dragdrop-handle",
-        opacity: 0.5,
-        cursor: "move",
-        update: function (event, ui) {
-            $('.sort-order-value').each(function (index, value) {
-                console.log(index);
-                $(value).val(index + 1);
+
+            $(addIngButton).click(function (e) { //on add input button click
+                e.preventDefault();
+                if (x < max_fields) { //max input box allowed
+                    x++; //text box increment
+                    $(ingWrapper).append($(addIngInput)); //add input box
+                }
             });
-        }
-    });
-    $('.sort-container').disableSelection();
-});
-</script>
+            $(addDescButton).click(function (e) { //on add input button click
+                e.preventDefault();
+                if (x < max_fields) { //max input box allowed
+                    x++; //text box increment
+                    $(descWrapper).append($(addDescInput)); //add input box
+                }
+            });
+            $('.remove-target').on("click", ".delete-handle", function (e) { //user click on remove text
+                e.preventDefault();
+                $(this).parent('div').remove();
+                x--;
+                console.log(this)
+            });
+
+            $('.sort-container').sortable({
+                placeholder: "ui-state-highlight",
+                handle: ".dragdrop-handle",
+                opacity: 0.5,
+                cursor: "move",
+                update: function (event, ui) {
+                    $('.sort-order-value').each(function (index, value) {
+                        console.log(index);
+                        $(value).val(index + 1);
+                    });
+                }
+            });
+            $('.sort-container').disableSelection();
+        });
+    </script>
 </body>
+
 </html>

@@ -1,36 +1,38 @@
 {{#each Recipes}}
-  <div class="row">
-    <div class="col-md-3"><h1>{{title}}</h1></div>
-    <div class="col-md-9">{{description}}</div>
+<div class="row">
+  <div class="col-md-3">
+    <h1>{{title}}</h1>
   </div>
-  <div class="row">
-    <div class="col-md-3">
-      <img src="../images/{{picture}}" alt="picture_of_recipe_{{id}}" width="200px">
-    </div>
-    <div class="col-md-3">
-      <h2>Ingredients</h2>
-      <ul>
-        {{#each Ingredients}}
-          <li title="{{qty}}{{Unit.unit}} - {{ingredient}}">
-            {{qty}}{{Unit.abbr}} - {{ingredient}}
-          </li>
-        {{/each}}
-      </ul>
-    </div>
-    <div class="col-md-4">
-      <h2>Directions</h2>
-      <ol>
-        {{#each Directions}}
-          <li>
-            {{direction}}
-          </li>
-        {{/each}}
-      </ol>
-    </div>
-    <div class="col-md-2">
-      <input class="actionButton" type="button" recipeID={{id}} value="View">
-      <input class="actionButton" type="button" recipeID={{id}} value="Edit">
-      <input class="actionButton" type="button" recipeID={{id}} value="Delete">
-    </div>
+  <div class="col-md-9">{{description}}</div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <img src="../images/{{picture}}" alt="picture_of_recipe_{{id}}" width="200px">
   </div>
+  <div class="col-md-3">
+    <h2>Ingredients</h2>
+    <ul>
+      {{#each Ingredients}}
+      <li title="{{qty}}{{Unit.unit}} - {{ingredient}}">
+        {{qty}}{{Unit.abbr}} - {{ingredient}}
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class="col-md-4">
+    <h2>Directions</h2>
+    <ol>
+      {{#each Directions}}
+      <li>
+        {{direction}}
+      </li>
+      {{/each}}
+    </ol>
+  </div>
+  <div class="col-md-2">
+    <input class="actionButton" type="button" recipeID={{id}} value="View">
+    <input class="actionButton" type="button" recipeID={{id}} value="Edit">
+    <input class="actionButton" type="button" recipeID={{id}} value="Delete">
+  </div>
+</div>
 {{/each}}
