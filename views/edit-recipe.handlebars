@@ -8,7 +8,7 @@
 {{#each Recipes}}
 <form>
   <div class="row">
-    <div class="col-md-4 recipe">
+    <div class="col-md-6 recipe">
       <div class="input-group-sm">
         <h3>Recipe Title</h3>
         <input type="text" value="{{title}}" class="form-control title" recipeID={{id}}>
@@ -30,7 +30,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-6">
       <h3>Ingredients</h3>
       <form class="form">
         <div class="sort-container">
@@ -38,9 +38,12 @@
             <div class="sort-item">
               <input type="hidden" class="sort-order-value" name="sort-order[]" value={{itm}}>
               <div class="input-group ingredients">
+                <span class="form-control">
                 <input type="text" value="{{qty}}" maxlength="4" size="4" name="Qty">
                 <input type="text" value="{{Unit.abbr}}" maxlength="4" size="4" name="Unit">
                 <input type="text" value="{{ingredient}}" maxlength="19" size="19" name="Ingredient">
+                              </span>
+
                 <div class="input-group-addon delHandle"><span class="glyphicon glyphicon-remove"></span></div>
                 <div class="input-group-addon dragdrop-handle"><span class="glyphicon glyphicon-move"></span></div>
               </div>
@@ -53,7 +56,7 @@
       </form>
 
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
       <h3>Directions</h3>
       <form class="form">
         <div class="sort-container">
@@ -61,7 +64,7 @@
             <div class="sort-item directions">
               <input type="hidden" class="sort-order-value" name="sort-order[]" value={{step}}>
               <div class="input-group">
-                <textarea type="text" maxlength="150" rows="1" cols="50" style="resize: both" name=Direction>{{direction}}</textarea>
+                <textarea class="form-control" type="text" maxlength="150" rows="1" cols="50" style="resize: both" name=Direction>{{direction}}</textarea>
                 <div class="input-group-addon delHandle"><span class="glyphicon glyphicon-remove"></span></div>
                 <div class="input-group-addon dragdrop-handle"><span class="glyphicon glyphicon-move"></span></div>
               </div>
@@ -74,9 +77,10 @@
       </form>
     </div>
       </div>
-
-    <div class="col-md-2">
-      <input class="actionButton" type="button" recipeID={{id}} value="Save">
+  <div class="row submit-btn">
+    <div class="col-md-12 text-center">
+      <button class="actionButton btn btn-default" type="button" recipeID={{id}} value="Save">Save</button>
+    </div>
     </div>
   </div>
 {{/each}}
