@@ -125,7 +125,7 @@ console.log(__dirname)
             where: {id: dbRecipe.id}
           }).then(dbRecipe => {
             db.Units.findAll({}).then(dbUnits =>  {
-              res.render("edit-recipe", {Recipes: [dbRecipe], Units: dbUnits});
+              res.render("edit-recipe", {'Recipes': [dbRecipe], 'allUnits': dbUnits});
             });
           });
         });
@@ -152,8 +152,8 @@ console.log(__dirname)
       where: {id: req.params.id}
     }).then(dbRecipe => {
       console.log("Updated id=" + dbRecipe.id)
-      db.Units.findAll({}).then(dbUnits =>  {
-        res.render("edit-recipe", {Recipes: [dbRecipe], Units: dbUnits});
+      db.Units.findAll().then(dbUnits =>  {
+         res.render("edit-recipe", {'Recipes': [dbRecipe], 'allUnits': dbUnits});
       });
     });
   })
@@ -175,15 +175,19 @@ console.log(__dirname)
   // Save Changes from update display to Database
   app.post("/save", function(req, res) {
     var MyRecipeID = req.body.id
+console.log(MyRecipeID)
     var MyRecipes = req.body.Recipes
+console.log(MyRecipes)
     var MyIngredients = req.body.Ingredients
+console.log(MyIngredients)
     var MyDirections = req.body.Directions
+console.log(MyDirections)
 
     try {
       createOrUpdate(
         db.Recipes,
         { id:  MyRecipeID },
-        { title: MyRecipes.title,
+        { title: req.body.Recipes.title,
           description: MyRecipes.description,
           picture: MyRecipes.picture,
           keyWords: MyRecipes.keyWords }

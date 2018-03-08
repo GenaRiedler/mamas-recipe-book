@@ -19,14 +19,14 @@
       <div class=""> <!--Image upload-->
         <div class="">
           <img src="../images/{{picture}}" alt="picture_of_recipe_{{id}}" height="200px" class="picture">
-          <form ref='uploadForm'
+<!--          <form ref='uploadForm'
             id='uploadForm'
             action='http://localhost:8080/image/{{id}}'
             method='post'
             encType="multipart/form-data">
               <input type="file" name="sampleFile" />
               <input type='submit' value='Upload!' />
-          </form>
+          </form> -->
         </div>
       </div>
     </div>
@@ -37,13 +37,11 @@
           {{#each Ingredients}}
             <div class="sort-item">
               <input type="hidden" class="sort-order-value" name="sort-order[]" value={{itm}}>
-              <div class="input-group ingredients">
-                <span class="form-control">
+              <div class="input-group form-control ingredients">
                 <input type="text" value="{{qty}}" maxlength="4" size="4" name="Qty">
-                <input type="text" value="{{Unit.abbr}}" maxlength="4" size="4" name="Unit">
+                <select class="unitlist" preselect={{unitID}} name="Unit">
+                </select>
                 <input type="text" value="{{ingredient}}" maxlength="19" size="19" name="Ingredient">
-                              </span>
-
                 <div class="input-group-addon delHandle"><span class="glyphicon glyphicon-remove"></span></div>
                 <div class="input-group-addon dragdrop-handle"><span class="glyphicon glyphicon-move"></span></div>
               </div>
@@ -61,9 +59,9 @@
       <form class="form">
         <div class="sort-container">
           {{#each Directions}}
-            <div class="sort-item directions">
+            <div class="sort-item">
               <input type="hidden" class="sort-order-value" name="sort-order[]" value={{step}}>
-              <div class="input-group">
+              <div class="input-group form-control directions">
                 <textarea class="form-control" type="text" maxlength="150" rows="1" cols="50" style="resize: both" name=Direction>{{direction}}</textarea>
                 <div class="input-group-addon delHandle"><span class="glyphicon glyphicon-remove"></span></div>
                 <div class="input-group-addon dragdrop-handle"><span class="glyphicon glyphicon-move"></span></div>
@@ -104,6 +102,13 @@ $(document).ready(function () {
         }
         itmList.sortable('refresh');
      });
+
+    $.each($('.unitlist'), (index, ctrl) => {
+        opt = $(ctrl).attr("preselect")
+        {{#each allUnits}}
+            $("<option value={{id}}" + (opt == {{id}} ? " selected" : "") + ">{{abbr}} - {{unit}}</option>").appendTo(ctrl)
+        {{/each}}
+    })
 
     $('div.sort-container').on("click", "div.delHandle", function() {
         if ($(this).parent().parent().parent().children().length > 1) {

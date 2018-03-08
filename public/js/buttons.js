@@ -10,52 +10,54 @@ $(document).ready(function() {
 				window.location.href = "/update/" + $(this)[0].attributes.recipeID.value
 		        break;
 		    case "Delete":
-		    	var MyJSON = {id: $(this)[0].attributes.recipeID.value}
+		    	var MyJSON = { id: $(this)[0].attributes.recipeID.value }
 				$.post("/delete", MyJSON, (data, status) => {
 					if (status != "success") alert(status)
 					window.location.href = "/displayAll"
 				})
 				break;
 		    case "Save":
-		    	var MyJSON = { id: 0,
-		    			   Recipes: {title:'', description:'', picture:'', keyWords:''},
-		    			   Ingredients: [],
-		    			   Directions: []
-		    			}
+		    	var Recipes = {
+		    	 	'title': $(".title")[0].value,
+					'description': $(".description")[0].value,
+					'picture': $(".picture")[0].value,
+					'keyWords': ''
+				}
 
-		    	MyJSON.id = $(this)[0].attributes.recipeID.value
-		    	MyJSON.Recipes.title = $(".title")[0].value
-		    	MyJSON.Recipes.description = $(".description")[0].value
-		    	MyJSON.Recipes.picture = $(".picture")[0].value
-		    	MyJSON.Recipes.keyWords = ""
-
-		    	ingredientJSON = {itm: 0, qty: 0, unit: 0, ingredient: ""}
-		    	$('.ingredients').forEach(ingredient, index => {
-		    		src = $(this).children('input, textarea')
-		    		ingredientJSON.itm = index+1
-		    		ingredientJSON.qty = src[0].value
-		    		ingredientJSON.unit = src[1].value
-		    		ingredientJSON.ingredient = src[2].value
-		    		MyJSON.Ingredients.push(ingredientJSON)
+				var Ingredients = []
+				$.each($('.ingredients'), (index, ingredient) => {
+		    		var src = $(ingredient).children('input, textarea, select')
+		    		Ingredients.push({
+		    			'itm': index+1,
+		    			'qty': src[0].value,
+		    			'unitID': src[1].value,
+		    			'ingredient': src[2].value })
 		    	})
 
-		    	directionJSON = {step: 0, direction: ""}
-		    	$('.directions').forEach(direction, index => {
-		    		src = $(this).children('input, textarea')
-		    		directionJSON.step = index+1
-		    		directionJSON.direction = src[0].value
-		    		MyJSON.Directions.push(directionJSON)
+				var Directions = []
+				$.each($('.directions'), (index, direction) => {
+		    		var src = $(direction).children('input, textarea')
+		    		Directions.push({
+		    			'step': index+1,
+		    			'direction': src[0].value
+		    		})
 		    	})
 
-				$.ajax({
-				    type: "POST",
-				    url: "/save",
-				    data: MyJSON,
-				    contentType: "application/json; charset=utf-8",
-				    dataType: "json",
-				    success: (data) => { alert(data) },
-				    failure: (errMsg) => { alert(errMsg) }
-				});
+		        $.ajax({
+		            url: '/save',
+		            type: 'post',
+		            data: JSON.stringify({
+						'id': $(this)[0].attributes.recipeID.value,
+						'Recipes': Recipes,
+						'Ingredients': Ingredients,
+						'Directions': Directions
+					}),
+		            contentType: "application/json; charset=utf-8",
+			        dataType: "json",
+		            traditional: true,
+					success: function(data){alert(data)},
+					failure: function(errMsg) {alert(errMsg)}
+		        });
 				break;
 			default:
 				window.location.href = "/"
