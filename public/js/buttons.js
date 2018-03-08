@@ -10,10 +10,14 @@ $(document).ready(function() {
 				window.location.href = "/update/" + $(this)[0].attributes.recipeID.value
 		        break;
 		    case "Delete":
-				window.location.href = "/delete/" + $(this)[0].attributes.recipeID.value
+		    	var MyJSON = {id: $(this)[0].attributes.recipeID.value}
+				$.post("/delete", MyJSON, (data, status) => {
+					if (status != "success") alert(status)
+					window.location.href = "/displayAll"
+				})
 				break;
 		    case "Save":
-		    	MyJSON = { id: 0,
+		    	var MyJSON = { id: 0,
 		    			   Recipes: {title:'', description:'', picture:'', keyWords:''},
 		    			   Ingredients: [],
 		    			   Directions: []

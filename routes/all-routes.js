@@ -52,6 +52,7 @@ module.exports = function(app) {
       console.log("Retrieved id=" + dbRecipe.map(Recipe => Recipe.id))
       res.render("carousel", {Recipes: dbRecipe})
     });
+console.log(__dirname)
   });
 
   // Display all recipes (One per row with Edit/Delete buttons)
@@ -60,10 +61,12 @@ module.exports = function(app) {
       console.log("Retrieved id=" + dbRecipe.map(Recipe => Recipe.id))
       res.render("all-recipes", {Recipes: dbRecipe})
     });
+console.log(__dirname)
   })
 
   // Display One Recipe (by ID)
   app.get("/displayOne/:id", function(req, res){
+    var MyRecipeID = req.params.id
     db.Recipes.findOne({
       include: [
         {
@@ -77,11 +80,12 @@ module.exports = function(app) {
           model: db.Directions
         }
       ],
-      where: {id: req.params.id}
+      where: {id: MyRecipeID}
     }).then(dbRecipe => {
       console.log("Retrieved id=" + dbRecipe.id)
       res.render("one-recipe", {Recipes: [dbRecipe]})
     });
+console.log(__dirname)
   })
 
   // Add New Recipe to database and Display Update with new ID
@@ -129,19 +133,6 @@ module.exports = function(app) {
     });
   })
 
-  // Add New Recipe to database and Display Update with new ID
-  app.get("/delete/:id", function(req, res){
-    // Delete recipe from database
-    db.Recipes.destroy({
-      where: {id: req.params.id}
-    }).then(dbRecipe => {
-      console.log("Deleted id=" + req.params.id)
-      db.Recipes.findAll({}).then(dbRecipe =>  {
-        res.render("all-recipes", {Recipes: dbRecipe})
-      });
-    });
-  })
-
   /// Display Update with ID requested
   app.get("/update/:id", function(req, res){
     // get recipe with ID=id
@@ -167,8 +158,22 @@ module.exports = function(app) {
     });
   })
 
+  // Add New Recipe to database and Display Update with new ID
+  app.post("/delete", function(req, res){
+    var MyRecipeID = req.body.id
+    // Delete recipe from database
+    db.Recipes.destroy({
+      where: {id: MyRecipeID}
+    }).then(dbRecipe => {
+      console.log("Deleted id=" + MyRecipeID)
+      db.Recipes.findAll({}).then(dbRecipe =>  {
+        return res.send(200)
+      });
+    });
+  })
+
   // Save Changes from update display to Database
-  app.post("/Save", function(req, res) {
+  app.post("/save", function(req, res) {
     var MyRecipeID = req.body.id
     var MyRecipes = req.body.Recipes
     var MyIngredients = req.body.Ingredients
@@ -229,8 +234,8 @@ module.exports = function(app) {
 
   // Update Database from update display
   app.post("/image", function(req, res) {
-    console.log(req)
-    if (!req.files)
+    var MyRecipeID = req.body.id
+     if (!req.files)
       return res.status(400).send('No files were uploaded.');
 
     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
@@ -240,20 +245,21 @@ module.exports = function(app) {
     }
 
     var posIdx = sampleFile.name.lastIndexOf('.');
-    var fileName = "./public/images/" + sampleFile.name.substr(0, posIdx) + Date.now() + sampleFile.name.substr(posIdx)
+    var fileName = sampleFile.name.substr(0, posIdx) + Date.now() + sampleFile.name.substr(posIdx)
     console.log(fileName)
 
     // Use the mv() method to place the file somewhere on your server
-    sampleFile.mv(fileName, function(err) {
+    sampleFile.mv("./public/images/" + fileName, function(err) {
       if (err) return res.status(500).send(err);
       db.Recipes.update({
           picture: fileName
         },{
-          where: {id: req.params.id}
+          where: {id: MyRecipeID}
         }).then(dbRecipe =>  {
-          console.log("Updated Picutre for id=" + dbRecipe.id)
+          console.log("Updated Picutre for id=" + MyRecipeID)
           return res.send(200);
         });
       });
-    });
+  });
+
 }
