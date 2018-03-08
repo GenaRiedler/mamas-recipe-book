@@ -168,8 +168,8 @@ module.exports = function(app) {
   })
 
   // Save Changes from update display to Database
-  app.post("/Save/:id", function(req, res) {
-    var MyRecipeID = req.params.id
+  app.post("/Save", function(req, res) {
+    var MyRecipeID = req.body.id
     var MyRecipes = req.body.Recipes
     var MyIngredients = req.body.Ingredients
     var MyDirections = req.body.Directions
@@ -228,7 +228,8 @@ module.exports = function(app) {
   })
 
   // Update Database from update display
-  app.post("/image/:id", function(req, res) {
+  app.post("/image", function(req, res) {
+    console.log(req)
     if (!req.files)
       return res.status(400).send('No files were uploaded.');
 
@@ -239,10 +240,11 @@ module.exports = function(app) {
     }
 
     var posIdx = sampleFile.name.lastIndexOf('.');
-    var fileName = sampleFile.name.substr(0, posIdx) + Date.now() + sampleFile.name.substr(posIdx)
+    var fileName = "./public/images/" + sampleFile.name.substr(0, posIdx) + Date.now() + sampleFile.name.substr(posIdx)
+    console.log(fileName)
 
     // Use the mv() method to place the file somewhere on your server
-    sampleFile.mv("./public/images/" + fileName, function(err) {
+    sampleFile.mv(fileName, function(err) {
       if (err) return res.status(500).send(err);
       db.Recipes.update({
           picture: fileName

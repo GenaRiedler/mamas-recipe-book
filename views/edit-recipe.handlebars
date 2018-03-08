@@ -8,23 +8,23 @@
 {{#each Recipes}}
 <form>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 recipe">
       <div class="input-group-sm">
         <h3>Recipe Title</h3>
-        <input type="text" value="{{title}}" class="form-control" id="titleInput">
+        <input type="text" value="{{title}}" class="form-control title" recipeID={{id}}>
         <h3>Description</h3>
-        <input type="text" value="{{description}}" class="form-control" id="descInput">
+        <input type="text" value="{{description}}" class="form-control description">
       </div>
 
       <div class=""> <!--Image upload-->
         <div class="">
-          <img src="../images/{{picture}}" alt="picture_of_recipe_{{id}}" height="200px">
+          <img src="../images/{{picture}}" alt="picture_of_recipe_{{id}}" height="200px" class="picture">
           <form ref='uploadForm'
             id='uploadForm'
-            action='http://localhost:8080/image/{{id}}'
+            action='http://localhost:8080/image'
             method='post'
             encType="multipart/form-data">
-              <input class="form-control" type="file" name="sampleFile" />
+              <input class="form-control" type="file" name="sampleFile" recipeID="{{id}}"/>
               <input class="btn btn-default btn-sm" type='submit' value='Upload!'>
           </form>
         </div>
@@ -37,10 +37,10 @@
           {{#each Ingredients}}
             <div class="sort-item">
               <input type="hidden" class="sort-order-value" name="sort-order[]" value={{itm}}>
-              <div class="input-group">
-                <input type="text" value="{{qty}}" maxlength="4" size="4">
-                <input type="text" value="{{Unit.abbr}}" maxlength="4" size="4">
-                <input type="text" value="{{ingredient}}" maxlength="19" size="19">
+              <div class="input-group ingredients">
+                <input type="text" value="{{qty}}" maxlength="4" size="4" name="Qty">
+                <input type="text" value="{{Unit.abbr}}" maxlength="4" size="4" name="Unit">
+                <input type="text" value="{{ingredient}}" maxlength="19" size="19" name="Ingredient">
                 <div class="input-group-addon delHandle"><span class="glyphicon glyphicon-remove"></span></div>
                 <div class="input-group-addon dragdrop-handle"><span class="glyphicon glyphicon-move"></span></div>
               </div>
@@ -58,10 +58,10 @@
       <form class="form">
         <div class="sort-container">
           {{#each Directions}}
-            <div class="sort-item">
+            <div class="sort-item directions">
               <input type="hidden" class="sort-order-value" name="sort-order[]" value={{step}}>
               <div class="input-group">
-                <textarea type="text" maxlength="150" rows="1" cols="50" style="resize: both">{{direction}}</textarea>
+                <textarea type="text" maxlength="150" rows="1" cols="50" style="resize: both" name=Direction>{{direction}}</textarea>
                 <div class="input-group-addon delHandle"><span class="glyphicon glyphicon-remove"></span></div>
                 <div class="input-group-addon dragdrop-handle"><span class="glyphicon glyphicon-move"></span></div>
               </div>
@@ -94,8 +94,8 @@ $(document).ready(function () {
         var grpItem = itmList.children().last()
         var newItem = grpItem.clone().appendTo(itmList)
         grpItem.children().first().value++
-        src = newItem.children().last().children('input')
-       for (i=0; i<src.length; i++) {
+        src = newItem.children().last().children('input,textarea')
+        for (i=0; i<src.length; i++) {
             src[i].value = ''
         }
         itmList.sortable('refresh');
