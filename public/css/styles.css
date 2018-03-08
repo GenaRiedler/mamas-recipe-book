@@ -71,3 +71,7 @@ input select {
     border-radius: 20px; 
 }
 
+.submit-btn {
+    padding-top: 20px;
+}
+
