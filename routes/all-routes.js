@@ -175,13 +175,9 @@ console.log(__dirname)
   // Save Changes from update display to Database
   app.post("/save", function(req, res) {
     var MyRecipeID = req.body.id
-console.log(MyRecipeID)
     var MyRecipes = req.body.Recipes
-console.log(MyRecipes)
     var MyIngredients = req.body.Ingredients
-console.log(MyIngredients)
     var MyDirections = req.body.Directions
-console.log(MyDirections)
 
     try {
       createOrUpdate(
@@ -261,7 +257,25 @@ console.log(MyDirections)
           where: {id: MyRecipeID}
         }).then(dbRecipe =>  {
           console.log("Updated Picutre for id=" + MyRecipeID)
-          return res.send(200);
+          db.Recipes.findOne({
+            include: [
+              {
+                model: db.Ingredients,
+                include: [
+                  {
+                    model: db.Units,
+                  }
+                ]
+              },{
+                model: db.Directions
+              }
+            ],
+            where: {id: MyRecipeID}
+          }).then(dbRecipe => {
+            db.Units.findAll().then(dbUnits =>  {
+               res.render("edit-recipe", {'Recipes': [dbRecipe], 'allUnits': dbUnits});
+            });
+          });
         });
       });
   });
