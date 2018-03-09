@@ -16,7 +16,12 @@ $(document).ready(function() {
 					window.location.href = "/displayAll"
 				})
 				break;
-		    case "Save":
+			case "Reset":
+				window.location.href = "/update/" + $(this)[0].attributes.recipeID.value
+				break;
+			case "Save":
+				var displayOne = window.location.href = "/displayOne/" + $(this)[0].attributes.recipeID.value;
+
 		    	var Recipes = {
 		    	 	'title': $(".title")[0].value,
 					'description': $(".description")[0].value,
@@ -55,9 +60,12 @@ $(document).ready(function() {
 		            contentType: "application/json; charset=utf-8",
 			        dataType: "json",
 		            traditional: true,
-					success: function(data){alert(data)},
+					success: function(displayOne) {
+						window.location.assign(displayOne);
+					},
 					failure: function(errMsg) {alert(errMsg)}
-		        });
+				});
+				window.reload(displayOne);
 				break;
 			default:
 				window.location.href = "/"
