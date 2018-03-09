@@ -237,8 +237,8 @@ console.log(MyDirections)
   })
 
   // Update Database from update display
-  app.post("/image", function(req, res) {
-    var MyRecipeID = req.body.id
+  app.post("/image/:id", function(req, res) {
+    var MyRecipeID = req.params.id
      if (!req.files)
       return res.status(400).send('No files were uploaded.');
 
