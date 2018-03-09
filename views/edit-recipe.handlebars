@@ -6,7 +6,6 @@
   </div>
 
 {{#each Recipes}}
-<form>
   <div class="row">
     <div class="col-md-6 recipe">
       <div class="input-group-sm">
@@ -52,7 +51,6 @@
           <div class="btn btn-default btn-sm addHandle">Add an Ingredient <span class="glyphicon glyphicon-plus"></span></div>
         </div>
       </form>
-
     </div>
     <div class="col-md-6">
       <h3>Directions</h3>
@@ -83,7 +81,6 @@
     </div>
   </div>
 {{/each}}
-</form>
 </div>
 
 
@@ -97,7 +94,7 @@ $(document).ready(function () {
         var grpItem = itmList.children().last()
         var newItem = grpItem.clone().appendTo(itmList)
         grpItem.children().first().value++
-        src = newItem.children().last().children('input,textarea')
+        src = newItem.children().last().children('input, textarea, select')
         for (i=0; i<src.length; i++) {
             src[i].value = ''
         }
