@@ -12,9 +12,9 @@
   <div class="col-md-3">
     <h2>Ingredients</h2>
     <ul>
-      {{#each Ingredients}}
-      <li title="{{qty}}{{Unit.unit}} - {{ingredient}}">
-        {{qty}}{{Unit.abbr}} - {{ingredient}}
+      {{#each ingredients}}
+      <li title="{{qty}}{{unit.unit}} - {{ingredient}}">
+        {{qty}}{{unit.abbr}} - {{ingredient}}
       </li>
       {{/each}}
     </ul>
@@ -22,7 +22,7 @@
   <div class="col-md-4">
     <h2>Directions</h2>
     <ol>
-      {{#each Directions}}
+      {{#each directions}}
       <li>
         {{direction}}
       </li>
