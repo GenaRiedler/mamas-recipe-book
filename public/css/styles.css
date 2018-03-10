@@ -1,14 +1,17 @@
 body { 
-    background-image: url('../images/gingham-mint.png'); 
-    font-family: 'Open Sans', sans-serif;
+    background-image: url('http://bejis.com/wp-content/uploads/2015/11/bigstock-Healthy-food-background-69442900-1024x746.jpg'); 
+    /* font-family: 'Open Sans', sans-serif;
+    height: 100%; */
+    background-repeat: no-repeat;  
+    /* background-position: center; */
+    background-size: cover;
 }
 h1 { 
-    color: #ff002a; 
     font-family: 'Great Vibes', cursive; 
     font-size: 50px; 
 }
 h3 { 
-    color: #ff002a; 
+    color: black; 
     text-transform: uppercase; 
     font-weight: 800; 
     font-size: 14px; 
@@ -17,35 +20,47 @@ input select {
     width: auto;
 }
 .navbar{
-    background :#ff002a;
-    border:#ff002a;
-    color:black;
+    background-color: black;
+    color: white;
+    font-family: 'Arial', cursive; 
 }
 
 .navbar-inverse .navbar-nav > .active > a {
-    background:#ff002a;
-    border:#ff002a;
+    background-color: black;
+    color: white;
+    font-family: 'Arial', cursive; 
 }
 
 .panel-primary>.panel-heading{
-    background:#8cf6e3;
-    border:#8cf6e3;
+    background: black;
     color:black;
+    /* margin-top: 120px; */
+    margin-bottom: -220px;
 }
-.panel-primary{
-    border:#8cf6e3;
+.panel panel-primary{
+    background-color: black;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 .navbar-inverse .navbar-nav>li>a{
-    color:black;
+    background-color: black;
+    color: white;
+    font-family: 'Arial', cursive; 
 }
 
 .navbar-inverse .navbar-brand{
-    color:black;
+    background-color: black;
+    color: white;
+    font-family: 'Arial', cursive; 
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
-    color:black;
-    background:#ff002a;
+    background-color: black;
+    color: white;
+    font-family: 'Arial', cursive; 
 }
 
 #sortable { 
@@ -70,8 +85,30 @@ input select {
     padding: 30px; 
     border-radius: 20px; 
 }
-
-.submit-btn {
-    padding-top: 20px;
+.actionButton {
+    background-color: grey;
+    color: white;
+}
+.col-md-3 {
+    font-family: 'Arial', cursive; 
+    font-size: 18px;
+    font-style: oblique;
+    font-weight: bold;
+    padding: 5px;
 }
 
+.col-md-5 {
+    font-family: 'Arial', cursive; 
+    font-size: 18px;
+    font-style: oblique;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.col-md-2 {
+    font-family: 'Arial', cursive; 
+    font-size: 14px;
+    font-style: oblique;
+    font-weight: bold;
+    padding: 5px;
+}
