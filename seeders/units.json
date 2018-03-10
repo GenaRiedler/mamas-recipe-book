@@ -1,9 +1,0 @@
-[{"id":1, "abbr":"", "unit":"", "createdAt":"2018-01-01 00:00:00", "updatedAt":"2018-01-01 00:00:00"},
- {"id":2, "abbr":"oz", "unit":"Ounces", "createdAt":"2018-01-01 00:00:00", "updatedAt":"2018-01-01 00:00:00"},
- {"id":3, "abbr":"lb", "unit":"Pounds", "createdAt":"2018-01-01 00:00:00", "updatedAt":"2018-01-01 00:00:00"},
- {"id":4, "abbr":"c", "unit":"Cups", "createdAt":"2018-01-01 00:00:00", "updatedAt":"2018-01-01 00:00:00"},
- {"id":5, "abbr":"qt", "unit":"Quarts", "createdAt":"2018-01-01 00:00:00", "updatedAt":"2018-01-01 00:00:00"},
- {"id":6, "abbr":"gal", "unit":"Gallons", "createdAt":"2018-01-01 00:00:00", "updatedAt":"2018-01-01 00:00:00"},
- {"id":7, "abbr":"pt", "unit":"Pints", "createdAt":"2018-01-01 00:00:00", "updatedAt":"2018-01-01 00:00:00"},
- {"id":8, "abbr":"tsp", "unit":"Teaspoons", "createdAt":"2018-01-01 00:00:00", "updatedAt":"2018-01-01 00:00:00"},
- {"id":9, "abbr":"tbl", "unit":"Tablespoons", "createdAt":"2018-01-01 00:00:00", "updatedAt":"2018-01-01 00:00:00"}]
