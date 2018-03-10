@@ -7,10 +7,10 @@
     "dialect": "mysql"
   },
   "test": {
-    "username": "bcoaa6zh1evo6kgl",
-    "password": "t4wo7l6npckw1w1h",
-    "database": "m9exoh2i0fzakdn6",
-    "host": "sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "username": "root",
+    "password": "(root)",
+    "database": "mamasrecipes_tst",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
