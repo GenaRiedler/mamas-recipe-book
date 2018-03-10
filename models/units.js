@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Units = sequelize.define('Units', {
+  var Units = sequelize.define('units', {
     id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
