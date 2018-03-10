@@ -1,15 +1,18 @@
 {{#each Recipes}}
+<div class="container edit-cont">
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-12 text-center">
     <h1>{{title}}</h1>
+    <h2>{{description}}</h2>
+    <hr>
   </div>
-  <div class="col-md-9">{{description}}</div>
+
 </div>
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-4">
     <img src="../images/{{picture}}" alt="picture_of_recipe_{{id}}" width="200px">
   </div>
-  <div class="col-md-3">
+  <div class="col-md-4">
     <h2>Ingredients</h2>
     <ul>
       {{#each ingredients}}
@@ -29,9 +32,14 @@
       {{/each}}
     </ol>
   </div>
-  <div class="col-md-2">
-    <input class="actionButton" type="button" recipeID={{id}} value="Edit">
-    <input class="actionButton" type="button" recipeID={{id}} value="Delete">
+  
+  <div class="row text-center">
+    <div class="col-md-12">
+      <hr>
+      <input class="actionButton btn btn-default" type="button" recipeID={{id}} value="Edit">
+      <input class="actionButton btn btn-default" type="button" recipeID={{id}} value="Delete">
+    </div>
   </div>
+</div>
 </div>
 {{/each}}
