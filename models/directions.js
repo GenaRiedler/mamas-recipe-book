@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Directions = sequelize.define('Directions', {
+  var Directions = sequelize.define('directions', {
     id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
