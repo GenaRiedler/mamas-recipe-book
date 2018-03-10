@@ -48,7 +48,7 @@ module.exports = function(app) {
 
   // Display Carousel (Home Page)
   app.get("/", function(req, res){
-    db.Recipes.findAll({}).then(dbRecipe => {
+    db.recipes.findAll({}).then(dbRecipe => {
       console.log("Retrieved id=" + dbRecipe.map(Recipe => Recipe.id))
       res.render("carousel", {Recipes: dbRecipe})
     });
@@ -57,7 +57,7 @@ console.log(__dirname)
 
   // Display all recipes (One per row with Edit/Delete buttons)
   app.get("/displayAll", function (req, res){
-    db.Recipes.findAll({}).then(dbRecipe =>  {
+    db.recipes.findAll({}).then(dbRecipe =>  {
       console.log("Retrieved id=" + dbRecipe.map(Recipe => Recipe.id))
       res.render("all-recipes", {Recipes: dbRecipe})
     });
@@ -67,17 +67,17 @@ console.log(__dirname)
   // Display One Recipe (by ID)
   app.get("/displayOne/:id", function(req, res){
     var MyRecipeID = req.params.id
-    db.Recipes.findOne({
+    db.recipes.findOne({
       include: [
         {
-          model: db.Ingredients,
+          model: db.ingredients,
           include: [
             {
-              model: db.Units,
+              model: db.units,
             }
           ]
         },{
-          model: db.Directions
+          model: db.directions
         }
       ],
       where: {id: MyRecipeID}
@@ -91,40 +91,40 @@ console.log(__dirname)
   // Add New Recipe to database and Display Update with new ID
   app.get("/create", function(req, res){
     // Add new recipe to database
-    db.Recipes.create({
+    db.recipes.create({
       title: 'New Title',
       description: 'New description',
       picture: 'mamas-recipes.png',
       keyWords: ''
     }).then(dbRecipe => {
-        db.Ingredients.create({
+        db.ingredients.create({
           recipeID: dbRecipe.id,
           itm: 1,
           qty: 0,
           unitID: 1,
           ingredient: "nothing"
       }).then(dbIngredients => {
-        db.Directions.create({
+        db.directions.create({
           recipeID: dbRecipe.id,
           step: 1,
           direction: "nothing to do"
         }).then(dbDirections => {
-          db.Recipes.findOne({
+          db.recipes.findOne({
             include: [
               {
-                model: db.Ingredients,
+                model: db.ingredients,
                 include: [
                   {
-                    model: db.Units,
+                    model: db.units,
                   }
                 ]
               },{
-                model: db.Directions
+                model: db.directions
               }
             ],
             where: {id: dbRecipe.id}
           }).then(dbRecipe => {
-            db.Units.findAll({}).then(dbUnits =>  {
+            db.units.findAll({}).then(dbUnits =>  {
               res.render("edit-recipe", {'Recipes': [dbRecipe], 'allUnits': dbUnits});
             });
           });
@@ -136,23 +136,23 @@ console.log(__dirname)
   /// Display Update with ID requested
   app.get("/update/:id", function(req, res){
     // get recipe with ID=id
-    db.Recipes.findOne({
+    db.recipes.findOne({
       include: [
         {
-          model: db.Ingredients,
+          model: db.ingredients,
           include: [
             {
-              model: db.Units,
+              model: db.units,
             }
           ]
         },{
-          model: db.Directions
+          model: db.directions
         }
       ],
       where: {id: req.params.id}
     }).then(dbRecipe => {
       console.log("Updated id=" + dbRecipe.id)
-      db.Units.findAll().then(dbUnits =>  {
+      db.units.findAll().then(dbUnits =>  {
          res.render("edit-recipe", {'Recipes': [dbRecipe], 'allUnits': dbUnits});
       });
     });
@@ -162,11 +162,11 @@ console.log(__dirname)
   app.post("/delete", function(req, res){
     var MyRecipeID = req.body.id
     // Delete recipe from database
-    db.Recipes.destroy({
+    db.recipes.destroy({
       where: {id: MyRecipeID}
     }).then(dbRecipe => {
       console.log("Deleted id=" + MyRecipeID)
-      db.Recipes.findAll({}).then(dbRecipe =>  {
+      db.recipes.findAll({}).then(dbRecipe =>  {
         return res.send(200)
       });
     });
@@ -181,7 +181,7 @@ console.log(__dirname)
 
     try {
       createOrUpdate(
-        db.Recipes,
+        db.recipes,
         { id:  MyRecipeID },
         { title: req.body.Recipes.title,
           description: MyRecipes.description,
@@ -191,7 +191,7 @@ console.log(__dirname)
 
       MyIngredients.forEach((oneIngredient, index) => {
         createOrUpdate(
-          db.Ingredients,
+          db.ingredients,
           { recipeID: MyRecipeID,
             itm:  index+1 },
           { recipeID: MyRecipeID,
@@ -203,14 +203,14 @@ console.log(__dirname)
       })
 
       deleteGreaterThan(
-        db.Ingredients,
+        db.ingredients,
         { recipeID: MyRecipeID,
           itm:  {[Op.gt]: MyIngredients.length}}
       )
 
       MyDirections.forEach((direction, index) => {
         createOrUpdate(
-          db.Directions,
+          db.directions,
           { recipeID: MyRecipeID,
             step:  index+1 },
           { recipeID: MyRecipeID,
@@ -220,7 +220,7 @@ console.log(__dirname)
       })
 
       deleteGreaterThan(
-        db.Directions,
+        db.directions,
         { recipeID: MyRecipeID,
           step:  {[Op.gt]: MyDirections.length}}
       )
@@ -251,28 +251,28 @@ console.log(__dirname)
     // Use the mv() method to place the file somewhere on your server
     sampleFile.mv("./public/images/" + fileName, function(err) {
       if (err) return res.status(500).send(err);
-      db.Recipes.update({
+      db.recipes.update({
           picture: fileName
         },{
           where: {id: MyRecipeID}
         }).then(dbRecipe =>  {
           console.log("Updated Picutre for id=" + MyRecipeID)
-          db.Recipes.findOne({
+          db.recipes.findOne({
             include: [
               {
-                model: db.Ingredients,
+                model: db.ingredients,
                 include: [
                   {
-                    model: db.Units,
+                    model: db.units,
                   }
                 ]
               },{
-                model: db.Directions
+                model: db.directions
               }
             ],
             where: {id: MyRecipeID}
           }).then(dbRecipe => {
-            db.Units.findAll().then(dbUnits =>  {
+            db.units.findAll().then(dbUnits =>  {
                res.render("edit-recipe", {'Recipes': [dbRecipe], 'allUnits': dbUnits});
             });
           });
