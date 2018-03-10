@@ -97,6 +97,7 @@ console.log(__dirname)
       picture: 'mamas-recipes.png',
       keyWords: ''
     }).then(dbRecipe => {
+console.log("Recipe Id=" + dbRecipe.id)
         db.ingredients.create({
           recipeID: dbRecipe.id,
           itm: 1,
@@ -104,11 +105,13 @@ console.log(__dirname)
           unitID: 1,
           ingredient: "nothing"
       }).then(dbIngredients => {
+console.log("Ingredients Id=" + dbIngredients.id)
         db.directions.create({
           recipeID: dbRecipe.id,
           step: 1,
           direction: "nothing to do"
         }).then(dbDirections => {
+console.log("Directions Id=" + dbDirections.id)
           db.recipes.findOne({
             include: [
               {
