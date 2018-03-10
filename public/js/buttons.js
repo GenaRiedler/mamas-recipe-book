@@ -20,8 +20,6 @@ $(document).ready(function() {
 				window.location.href = "/update/" + $(this)[0].attributes.recipeID.value
 				break;
 			case "Save":
-				var displayOne = window.location.href = "/displayOne/" + $(this)[0].attributes.recipeID.value;
-
 		    	var Recipes = {
 		    	 	'title': $(".title")[0].value,
 					'description': $(".description")[0].value,
@@ -65,7 +63,9 @@ $(document).ready(function() {
 					},
 					failure: function(errMsg) {alert(errMsg)}
 				});
-				window.reload(displayOne);
+				window.location.href = "/displayOne/" + $(this)[0].attributes.recipeID.value;
+				// var displayOne = window.location.href = "/displayOne/" + $(this)[0].attributes.recipeID.value;
+				// window.reload(displayOne);
 				break;
 			default:
 				window.location.href = "/"
