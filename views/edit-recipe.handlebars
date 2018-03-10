@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container edit-cont">
   <div class="row text-center">
             <h1>Edit Your Recipe</h1>
             <p>Enter your favorite recipe's ingredients and directions below. Drag and Drop on the items move icon to change
@@ -15,7 +15,7 @@
         <input type="text" value="{{description}}" class="form-control description">
       </div>
 
-      <div class=""> <!--Image upload-->
+      <div class="img-upload"> <!--Image upload-->
         <div class="">
           <img src="../images/{{picture}}" alt="picture_of_recipe_{{id}}" height="200px" class="picture">
           <form ref='uploadForm'
@@ -23,8 +23,8 @@
             action='/image/{{id}}'
             method='post'
             encType="multipart/form-data">
-              <input type="file" name="sampleFile" />
-              <input type='submit' value='Upload!' />
+              <p><input type="file" name="sampleFile" /></p>
+              <p></p><input class="btn btn-default btn-sm "type='submit' value='Upload!' /></p>
           </form>
         </div>
       </div>
