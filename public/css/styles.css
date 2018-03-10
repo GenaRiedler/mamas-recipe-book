@@ -1,14 +1,22 @@
 body { 
     background-image: url('http://bejis.com/wp-content/uploads/2015/11/bigstock-Healthy-food-background-69442900-1024x746.jpg'); 
-    /* font-family: 'Open Sans', sans-serif;
-    height: 100%; */
+    font-family: 'Arial', cursive;
+    /* height: 100%; */
     background-repeat: no-repeat;  
     /* background-position: center; */
     background-size: cover;
 }
 h1 { 
-    font-family: 'Great Vibes', cursive; 
+    font-family: 'Rokkitt', serif;
     font-size: 50px; 
+    font-weight: 300; 
+
+}
+h2 {
+    font-family: 'Rokkitt', serif;
+    font-size: 20px;
+    margin: 0px;
+
 }
 h3 { 
     color: black; 
@@ -81,12 +89,10 @@ input select {
     padding: 0px; 
 }
 .container { 
-    background-color: white; 
-    padding: 30px; 
-    border-radius: 20px; 
+    background-color: none; 
 }
-.actionButton {
-    background-color: grey;
+.actionButton, .btn-default {
+    background-color: black;
     color: white;
 }
 .col-md-3 {
