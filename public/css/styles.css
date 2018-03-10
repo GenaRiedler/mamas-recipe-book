@@ -14,7 +14,7 @@ h1 {
 }
 h2 {
     font-family: 'Rokkitt', serif;
-    font-size: 20px;
+    font-size: 24px;
     margin: 0px;
 
 }
@@ -39,13 +39,13 @@ input select {
     font-family: 'Arial', cursive; 
 }
 
-.panel-primary>.panel-heading{
+.panel-default>.panel-heading{
     background: black;
     color:black;
     /* margin-top: 120px; */
     margin-bottom: -220px;
 }
-.panel panel-primary{
+.panel panel-default{
     background-color: black;
     color: white;
     position: absolute;
@@ -91,10 +91,7 @@ input select {
 .container { 
     background-color: none; 
 }
-.actionButton, .btn-default {
-    background-color: black;
-    color: white;
-}
+
 .col-md-3 {
     font-family: 'Arial', cursive; 
     font-size: 18px;
@@ -117,4 +114,51 @@ input select {
     font-style: oblique;
     font-weight: bold;
     padding: 5px;
+}
+
+.btn {
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+}
+ 
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+ 
+.btn-default {
+    background: black;
+    color: #ffffff;
+}
+ 
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
+    background: rgb(1, 88, 15);
+    color: white;
+    box-shadow: none;
+}
+ 
+.btn-default:active, .btn-default.active {
+    background: white;
+    border: 1px black;
+    color: black;
+    box-shadow: none;
+}
+.thumbnail > img {
+    width: auto;
+    height: 200px;
+    object-fit: cover;
+}
+
+.thumb-wrapper {
+    padding: 30px 0px;
+}
+@media (max-width: 768px) {
+    .thumbnail > img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
 }
