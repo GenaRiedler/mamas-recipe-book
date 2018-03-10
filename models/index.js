@@ -43,8 +43,8 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 //Relations
-//db.Recipes.hasMany(db.Ingredients, {foreignKey: 'recipeID', sourceKey: 'id'})
-//db.Recipes.hasMany(db.Directions, {foreignKey: 'recipeID', sourceKey: 'id'})
-//db.Ingredients.belongsTo(db.Units, {foreignKey: 'unitID', sourceKey: 'id'});
+db.recipes.hasMany(db.ingredients, {foreignKey: 'recipeID', sourceKey: 'id'})
+db.recipes.hasMany(db.directions, {foreignKey: 'recipeID', sourceKey: 'id'})
+db.ingredients.belongsTo(db.units, {foreignKey: 'unitID', sourceKey: 'id'});
 
 module.exports = db;
