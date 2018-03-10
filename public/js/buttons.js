@@ -60,7 +60,7 @@ $(document).ready(function() {
 		            contentType: "application/json; charset=utf-8",
 			        dataType: "json",
 		            traditional: true,
-					success: function(displayOne) {
+					success: function() {
 						window.location.href = displayOne;
 					},
 					failure: function(errMsg) {alert(errMsg)}
