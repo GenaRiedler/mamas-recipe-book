@@ -59,7 +59,7 @@ console.log(__dirname)
   app.get("/displayAll", function (req, res){
     db.recipes.findAll({}).then(dbRecipe =>  {
       console.log("Retrieved id=" + dbRecipe.map(Recipe => Recipe.id))
-      res.render("all-recipes", {Recipes: dbRecipe})
+      res.render("view-all-recipes", {Recipes: dbRecipe})
     });
 console.log(__dirname)
   })

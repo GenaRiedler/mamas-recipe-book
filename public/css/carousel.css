@@ -1,17 +1,16 @@
 /* Carousel Customized */
+body > div {
+  padding: 0px;
+}
 
 .carousel {
-  padding: 0px 50px 0px 50px;
+  padding: 0px 0px 0px 0px;
   height: 500px;
   margin-bottom: 20px;
 }
 
 .carousel-indicators li {
   border: 1px solid black;
-}
-
-.actionButton {
-  color: black;
 }
 
 .carousel-inner>.item>img {
@@ -21,14 +20,17 @@
 
 .c-wrapper {
   min-height: 800px;
+  padding-right: 0px;
+  padding-left: 0px;
+
 }
 
 .c-background {
-  background: grey;
+  background: black;
   width: 100%;
   min-height: 300px;
   z-index: -1;
-  opacity: .5;
+  opacity: .25;
   position: absolute;
 }
 
@@ -41,7 +43,7 @@
 /* Curve Carousel */
 
 .carousel-control {
-  border-radius: 15px;
+  border-radius: 0px;
 }
 
 /* Imgage Element */
@@ -52,8 +54,12 @@
 }
 
 .carousel-inner>.item>img {
+  object-fit: cover;
   margin: 0 auto;
   height: 100px;
+}
+body > div {
+  padding: 0px;
 }
 
 /* Responsive CSS */
@@ -61,7 +67,7 @@
 @media (min-width: 768px) {
   /* Increase padding of carousel */
   .carousel {
-    padding: 0px 150px 0px 150px;
+    padding: 0px 0px 0px 0px;
     height: 500px;
     margin-bottom: 20px;
   }

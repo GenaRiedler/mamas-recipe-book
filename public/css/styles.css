@@ -1,14 +1,22 @@
 body { 
     background-image: url('http://bejis.com/wp-content/uploads/2015/11/bigstock-Healthy-food-background-69442900-1024x746.jpg'); 
-    /* font-family: 'Open Sans', sans-serif;
-    height: 100%; */
+    font-family: 'Arial', cursive;
+    /* height: 100%; */
     background-repeat: no-repeat;  
     /* background-position: center; */
     background-size: cover;
 }
 h1 { 
-    font-family: 'Great Vibes', cursive; 
+    font-family: 'Rokkitt', serif;
     font-size: 50px; 
+    font-weight: 300; 
+
+}
+h2 {
+    font-family: 'Rokkitt', serif;
+    font-size: 24px;
+    margin: 0px;
+
 }
 h3 { 
     color: black; 
@@ -31,13 +39,13 @@ input select {
     font-family: 'Arial', cursive; 
 }
 
-.panel-primary>.panel-heading{
+.panel-default>.panel-heading{
     background: black;
     color:black;
     /* margin-top: 120px; */
     margin-bottom: -220px;
 }
-.panel panel-primary{
+.panel panel-default{
     background-color: black;
     color: white;
     position: absolute;
@@ -80,24 +88,19 @@ input select {
     margin: 0px; 
     padding: 0px; 
 }
-.container { 
-    background-color: white; 
-    padding: 30px; 
-    border-radius: 20px; 
+.edit-cont { 
+    padding: 30px;
 }
-.actionButton {
-    background-color: grey;
-    color: white;
+.ingredients, .directions {
+    border: none;
 }
-.col-md-3 {
-    font-family: 'Arial', cursive; 
-    font-size: 18px;
-    font-style: oblique;
-    font-weight: bold;
-    padding: 5px;
+hr {
+    border: none;
+    height: 1px;
+    background: black;
 }
 
-.col-md-5 {
+/* .col-md-5 {
     font-family: 'Arial', cursive; 
     font-size: 18px;
     font-style: oblique;
@@ -111,4 +114,55 @@ input select {
     font-style: oblique;
     font-weight: bold;
     padding: 5px;
+} */
+
+.btn {
+    padding: 10px 15px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+}
+ 
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+ 
+.btn-default {
+    background: black;
+    color: #ffffff;
+}
+ 
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
+    background: rgb(1, 88, 15);
+    color: white;
+    box-shadow: none;
+}
+ 
+.btn-default:active, .btn-default.active {
+    background: white;
+    border: 1px black;
+    color: black;
+    box-shadow: none;
+}
+.thumbnail > img {
+    width: auto;
+    height: 200px;
+    object-fit: cover;
+}
+
+.thumb-wrapper {
+    padding: 30px 0px;
+}
+.img-upload {
+    padding: 20px 0;
+}
+
+@media (max-width: 768px) {
+    .thumbnail > img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
 }
