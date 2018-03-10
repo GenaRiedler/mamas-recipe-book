@@ -1,0 +1,22 @@
+<div class="container thumb-wrapper">
+    <div class="row"></div>
+        {{#each Recipes}}
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                <img class="thumb-img" src="images/{{picture}}" alt="picture_of_recipe_{{id}}">
+                <div class="caption">
+                    <h2>{{title}}</h2>
+                    <p>{{description}}</p>
+                    <p>
+                        <div class="btn-group-sm">
+                            <button class="btn btn-default actionButton" role="button" recipeID={{id}} value="View">View</button> 
+                            <button class="btn btn-default actionButton" role="button" recipeID={{id}} value="Edit">Edit</button>
+                            <button class="btn btn-default actionButton" role="button" recipeID={{id}} value="Delete">Delete</button>
+                        </div>
+                    </p>
+                </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
